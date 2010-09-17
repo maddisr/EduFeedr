@@ -1,0 +1,3 @@
+***** This file contains upgrate instructions in case of major changes *****
+
+All custom tables can be found from edufeedr_tables.sql situated in plugin directory root.

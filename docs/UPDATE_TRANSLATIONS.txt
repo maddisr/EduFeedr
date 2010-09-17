@@ -1,0 +1,26 @@
+==== Updating translations =====
+
+****** Explanation *****
+
+1. Note, that translations for edufeedr plugin and automatically updated.
+  a. That requires writing translatable strings in a certain manner
+  b. Example
+
+  /*translation:Some translatable text*/
+  elgg_echo('DOMAIN:some:translatable:text');
+
+  c. Translations picker knows to pick up the translation by "DOMAIN:" inside elgg_echo statement.
+  d. The previous line tells script that there is some text to be used in translations file for a certain identifier (text inside elgg_echo is used unique identifier). The translation text follows the "translation:" prefix inside comments line.
+  e. Both these statements should be specified as shown in example, on separate rows and following each other.
+
+***** Updating translations *****
+
+1. Download translator script from https://www.htk.tlu.ee/repos/edufeedr/bundle/translator/
+  a. You should make and "svn checkout" to catalog named "translator"
+  b. This folder should be placed inside the catalog of your plugin
+  c. You should have Python installed in your system (Python 2.4.x, 2.5.x or 2.6.x)
+  d. Your plugin should have "languages" catalog
+
+2. Run script "translations_picker.py"
+  a. If no errors occured, your translation files have been updated
+  b. In case of errors, see "errors.log" for details
