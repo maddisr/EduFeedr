@@ -310,8 +310,8 @@
 	}
 
 	function __edufeedr_users_sort_cmp($a, $b) {
-		$a_name = $a->lastname;
-		$b_name = $b->lastname;
+		$a_name = strtolower($a->lastname);
+		$b_name = strtolower($b->lastname);
 		if ($a_name == $b_name)
 			return 0;
 		return ($a_name < $b_name) ? -1 : 1;
