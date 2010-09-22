@@ -131,7 +131,7 @@
 	}
 
 	// Feed parsing methods and helpers
-	
+    // XXX UNUSED
 	function edufeedrSingleParticipantProgress($assignments, $posts_url, $course_starting_date) {
 		$simplepie_cache = get_plugin_setting('edufeedr_simplepie_cache', 'edufeedr');
 		$feed = new SimplePie();

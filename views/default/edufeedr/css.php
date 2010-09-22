@@ -325,3 +325,11 @@ table #participant {
 .edufeedr_educourse_listing_description {
 	padding: 10px 0 0 0;
 }
+
+#educourse_post_content ul {
+    list-style-type: disc;
+}
+
+#educourse_post_content ol {
+    list-style-type: decimal;
+}
