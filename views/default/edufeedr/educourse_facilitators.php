@@ -42,10 +42,11 @@
 					 url: "{$CONFIG->wwwroot}action/edufeedr/add_facilitator",
 					 type: "POST",
                      dataType: "json",
-                     data: data,
+					 data: data,
+                     cache: false,
 					 success: function(data) {
-						 if (data['success'] == 'true') {
-                              jQuery('#edufeedr_course_facilitators').append(data['facilitator']);
+						 if (data.success == 'true') {
+                              jQuery('#edufeedr_course_facilitators').append(data.facilitator);
                          }
                      },
                      error: function(data) {}
@@ -58,9 +59,10 @@
 					url: "{$CONFIG->wwwroot}action/edufeedr/remove_facilitator",
                     type: "POST",
 					data: data,
+                    cache: false,
                     dataType: "json",
 					success: function(data) {
-						if (data['success'] == 'true') {
+						if (data.success == 'true') {
                         jQuery('#facilitator_' + facilitator).remove();
 						}
                     },
