@@ -62,7 +62,7 @@
 				system_message(elgg_echo('edufeedr:message:participant:changed'));
 				$es = new EduSuckr;
                 $participant_data = array(
-	                'participant_id' => $participant_id,
+	                'participant_guid' => $participant_id,
 		            'course_guid' => $guid,
 		            'firstname' => $firstname,
 		            'lastname' => $lastname,
