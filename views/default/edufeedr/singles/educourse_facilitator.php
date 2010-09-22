@@ -17,8 +17,10 @@
 		$body = '';
 
 		$body .= '<div id="facilitator_'.$vars['facilitator']->getGUID().'">';
-		$body .= $vars['facilitator']->name . ' / ';
-		$body .= elgg_view('output/email', array('value' => $vars['facilitator']->email));
+		$body .= $vars['facilitator']->name;
+		if ($can_manage) {
+			$body .= ' / ' . elgg_view('output/email', array('value' => $vars['facilitator']->email));
+		}
 		if ($type == 'edit' && $show_delete && $can_manage) {
 			/*translation:remove*/
 			$body .= ' / <a class="edufeedr_action_delete_or_remove" href="#" onclick="edufeedrRemoveFacilitator(\''.$vars['facilitator']->getGUID().'\', \''.$vars['educourse']->getGUID().'\'); return false;">'.elgg_echo('edufeedr:action:remove_facilitator').'</a>';

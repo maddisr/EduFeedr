@@ -18,7 +18,7 @@
 			$body .= '<a href="' . $vars['url'] . 'pg/edufeedr/join/' . $vars['entity']->getGUID() . '" class="edufeedr_enrollment_link">' . elgg_echo('edufeedr:submit:enroll:to:the:course') . '</a>';
 		} else {
 			/*translation:the facilitator*/
-			$contact_facilitator_link = '<a href="mailto:' . $vars['entity']->getOwnerEntity()->email . '">' . elgg_echo('edufeedr:enroll:contact:facilitator') . '</a>';
+			$contact_facilitator_link = elgg_echo('edufeedr:enroll:contact:facilitator');
 			/*translation:Enrollment for this course ended on %s.<br />In case of questions, please contact %s.*/
 			$body .= sprintf(elgg_echo('edufeedr:educourse:enrollment:inactive:text'), elgg_view('output/calendar', array('value' => $vars['entity']->signup_deadline)), $contact_facilitator_link);
 		}
