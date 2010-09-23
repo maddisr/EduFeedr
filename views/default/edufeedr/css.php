@@ -326,10 +326,19 @@ table #participant {
 	padding: 10px 0 0 0;
 }
 
+/* POST CONTENT */
 #educourse_post_content ul {
     list-style-type: disc;
 }
 
 #educourse_post_content ol {
     list-style-type: decimal;
+}
+
+#educourse_post_content strong, b {
+    font-weight: bold;
+}
+
+#educourse_post_content em, i {
+    font-style: italic;
 }
