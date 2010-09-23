@@ -83,11 +83,11 @@
 	$course_ending_date_input = elgg_view('input/edufeedr_calendar', array('internalname' => 'course_ending_date', 'value' => $course_ending_date));
 
 	if (isset($vars['entity'])) {
-		/*translation:Start aggregating blog posts from*/
+		/*translation:Start aggregating blog posts and comments from*/
 		$course_start_aggregate_label = elgg_echo('edufeedr:label:educourse_start_aggregate');
 		$course_start_aggregate_input = elgg_view('input/edufeedr_calendar', array('internalname' => 'start_aggregate', 'value' => $start_aggregate));
 
-		/*translation:End aggeregating blog posts on*/
+		/*translation:End aggeregating blog posts and comments on*/
 		$course_stop_aggregate_label = elgg_echo('edufeedr:label:educourse_stop_aggregate');
 		$course_stop_aggregate_input = elgg_view('input/edufeedr_calendar', array('internalname' => 'stop_aggregate', 'value' => $stop_aggregate));
 

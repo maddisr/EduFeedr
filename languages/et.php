@@ -96,7 +96,7 @@
         
         /* 
         File: /edufeedr/start.php
-        Lines: 60
+        Lines: 62
         Text: EduFeedr FAQ
         _missing_translation_
         */
@@ -252,7 +252,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/educourse_facilitators.php
-        Lines: 78
+        Lines: 80
         Text: Add
         _missing_translation_
         */
@@ -460,7 +460,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/educourse_facilitators.php
-        Lines: 75
+        Lines: 77
         Text: Type the username of another user to add and additional facilitator to this course.
         _missing_translation_
         */
@@ -565,8 +565,7 @@
         
         /* 
         File: /edufeedr/index.php
-        File: /edufeedr/upgrade.php
-        Lines: 9, 18
+        Lines: 9
         Text: All courses
         _missing_translation_
         */
@@ -842,10 +841,10 @@
         /* 
         File: /edufeedr/views/default/edufeedr/forms/edit_educourse.php
         Lines: 87
-        Text: Start aggregating blog posts from
+        Text: Start aggregating blog posts and comments from
         _missing_translation_
         */
-        "edufeedr:label:educourse_start_aggregate" => "Start aggregating blog posts from",
+        "edufeedr:label:educourse_start_aggregate" => "Start aggregating blog posts and comments from",
         
         /* 
         File: /edufeedr/views/default/settings/edufeedr/edit.php
@@ -908,10 +907,10 @@
         /* 
         File: /edufeedr/views/default/edufeedr/forms/edit_educourse.php
         Lines: 91
-        Text: End aggeregating blog posts on
+        Text: End aggeregating blog posts and comments on
         _missing_translation_
         */
-        "edufeedr:label:educourse_stop_aggregate" => "End aggeregating blog posts on",
+        "edufeedr:label:educourse_stop_aggregate" => "End aggeregating blog posts and comments on",
         
         /* 
         File: /edufeedr/open_courses.php
@@ -1048,7 +1047,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/singles/educourse_facilitator.php
-        Lines: 24
+        Lines: 26
         Text: remove
         _missing_translation_
         */
