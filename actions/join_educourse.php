@@ -46,6 +46,13 @@
 				register_error(elgg_echo('edufeedr:error:engine:not:supported'));
 				forward('pg/edufeedr/join/' . $guid);
 			}
+			// Same blog can not be used twice
+			$blog_allowed = edufeedrCanRegisterWithBlog($guid, $blog);
+			if (!$blog_allowed) {
+				/*translation:You can not register to the course with the same blog twice.*/
+				register_error(elgg_echo('edufeedr:error:blog_added_second_time'));
+			    forward('pg/edufeedr/join/' . $guid);
+			}
 
 			// Add participant into table
 			$posts = $feeds['posts'];

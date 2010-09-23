@@ -90,6 +90,7 @@
 		return $opml;
 	}
 
+	// XXX THIS SHOULD BE CHANGED TO USE link:rel:alternate
 	function edufeedrGetSuitableGenerators() {
 		return array(
 			'blogger' => array('posts' => 'feeds/posts/default', 'comments' => 'feeds/comments/default'),
@@ -194,6 +195,7 @@
 		return $returned;
 	}
 
+	// XXX UNNEEDED
 	// Axpects to get output of get_content of SimplePie_Item and string to search for. Returns true if string is found in content at least once, othervice returns false
 	function __edufeedrItemIsAssignmentResponse($content, $assignment_url) {
 		// Get rid of ending slash
@@ -206,6 +208,7 @@
 		return false;
 	}
 
+	// XXX UNNEEDED
 	function __edufeedrIsAssignmentTimeframe($frame_start_ts, $frame_end_ts, $post_ts) {
 
 		if (empty($frame_start_ts) || empty($frame_end_ts) || empty($post_ts))
@@ -361,6 +364,26 @@
 		if (!$course_guid || !$participant_id)
 			return false;
 		return get_data_row("SELECT * FROM {$CONFIG->dbprefix}edufeedr_course_participants WHERE course_guid = $course_guid and id = $participant_id");
+	}
+
+	// Checks if participant with certain blog has already bee nregistered to the course
+	function edufeedrCanRegisterWithBlog($course_guid, $blog_url) {
+		global $CONFIG;
+		if (!$course_guid || !$blog_url) {
+			return false;
+		}
+		$blog_url_alternate = $blog_url;
+		// Deal with cases of url having a trailing slash or not
+		if (strrpos($blog_url, "/") === strlen($blog_url) - 1) {
+			$blog_url_alternate = substr($blog_url, 0 , -1);
+		} else {
+			$blog_url_alternate = $blog_url_alternate . '/';
+		}
+
+		if (!get_data_row("SELECT id FROM {$CONFIG->dbprefix}edufeedr_course_participants WHERE course_guid = $course_guid AND (blog = '$blog_url' OR blog = '$blog_url_alternate')")) {
+			return true;
+		}
+		return false;
 	}
 
 	function edufeedrGetSingleAssignment($course_guid, $assignment_id) {

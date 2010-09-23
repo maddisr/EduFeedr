@@ -72,7 +72,7 @@
         
         /* 
         File: /edufeedr/actions/join_educourse.php
-        Lines: 57
+        Lines: 64
         Text: You have joined the course %s
         _missing_translation_
         */
@@ -112,12 +112,12 @@
         "edufeedr:read:more" => "read more",
         
         /* 
-        File: /edufeedr/views/default/edufeedr/educourse_participants.php
-        Lines: 34
-        Text: vCard file with Address Book contacts
+        File: /edufeedr/actions/edit_participant.php
+        Lines: 83
+        Text: Participant information could not be changed.
         _missing_translation_
         */
-        "edufeedr:action:download:vcard:file" => "vCard file with Address Book contacts",
+        "edufeedr:error:participant:could:not:be:changed" => "Participant information could not be changed.",
         
         /* 
         File: /edufeedr/start.php
@@ -126,14 +126,6 @@
         _missing_translation_
         */
         "edufeedr:submenu:all:courses" => "All courses",
-        
-        /* 
-        File: /edufeedr/actions/edit_participant.php
-        Lines: 83
-        Text: Participant information could not be changed.
-        _missing_translation_
-        */
-        "edufeedr:error:participant:could:not:be:changed" => "Participant information could not be changed.",
         
         /* 
         File: /edufeedr/edit_participant.php
@@ -169,7 +161,7 @@
         
         /* 
         File: /edufeedr/api.php
-        Lines: 278
+        Lines: 281
         Text: Entered URL has no feed.
         _missing_translation_
         */
@@ -218,7 +210,7 @@
         File: /edufeedr/actions/join_educourse.php
         File: /edufeedr/actions/remove_assignment.php
         File: /edufeedr/actions/remove_participant.php
-        Lines: 334, 52, 80, 98, 55, 97, 79, 74, 24, 26
+        Lines: 337, 52, 80, 98, 55, 97, 79, 81, 24, 26
         Text: Error occured, object could not be sent to EduSuckr.
         _missing_translation_
         */
@@ -398,6 +390,14 @@
         _missing_translation_
         */
         "edufeedr:error:participant:not:found" => "Participant not found.",
+        
+        /* 
+        File: /edufeedr/actions/join_educourse.php
+        Lines: 53
+        Text: You can not register to the course with the same blog twice.
+        _missing_translation_
+        */
+        "edufeedr:error:blog_added_second_time" => "You can not register to the course with the same blog twice.",
         
         /* 
         File: /edufeedr/actions/add_educourse.php
@@ -621,7 +621,7 @@
         
         /* 
         File: /edufeedr/api.php
-        Lines: 302
+        Lines: 305
         Text: Post not found in blog RSS.
         _missing_translation_
         */
@@ -663,7 +663,7 @@
         
         /* 
         File: /edufeedr/actions/join_educourse.php
-        Lines: 78
+        Lines: 85
         Text: Participant could not be added to course %s
         _missing_translation_
         */
@@ -881,6 +881,14 @@
         "edufeedr:label:course_tag" => "Course tag",
         
         /* 
+        File: /edufeedr/views/default/edufeedr/educourse_participants.php
+        Lines: 34
+        Text: vCard file with Address Book contacts
+        _missing_translation_
+        */
+        "edufeedr:action:download:vcard:file" => "vCard file with Address Book contacts",
+        
+        /* 
         File: /edufeedr/views/default/object/educourse.php
         Lines: 44
         Text: Ending date
@@ -938,7 +946,7 @@
         
         /* 
         File: /edufeedr/api.php
-        Lines: 257
+        Lines: 260
         Text: Entered URL does not exist.
         _missing_translation_
         */
