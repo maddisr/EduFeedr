@@ -11,7 +11,7 @@
     function edufeedrIsEducourseOpen($educourse) {
 		$now = time();
 	    // Make deadline be the end of the day
-		if ($educourse->getSubtype() == 'educourse' && ((int) $educourse->signup_deadline + 86399) > $now)
+		if ($educourse->getSubtype() == 'educourse' && ((int) $educourse->signup_deadline + 86399) >= $now)
 			return true;
 
 		return false;
