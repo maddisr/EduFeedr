@@ -11,12 +11,18 @@
     $content = "";
 
 	$offset = get_input('offset', 0);
-	$entities_count = elgg_get_entities_from_metadata(array('type' => 'object', 'subtype' => 'educourse', 'metadata_name_value_pairs' => array(array('name' => 'signup_deadline', 'value' => time(), 'operand' => '>', 'case_sensitive' => 'false')), 'count' => 'true'));
-	$entities = elgg_get_entities_from_metadata(array('type' => 'object', 'subtype' => 'educourse', 'offset' => $offset, 'metadata_name_value_pairs' => array(array('name' => 'signup_deadline', 'value' => time(), 'operand' => '>', 'case_sensitive' => 'false')), 'order_by_metadata' => array('name' => 'course_starting_date', 'direction' => 'DESC', 'as' => 'integer')));
+	// Database timestamps are 00.00.00, compensate asif the time was 23.59.59
+	$modified_time = time() - 86399;
+	$entities_count = elgg_get_entities_from_metadata(array('type' => 'object', 'subtype' => 'educourse', 'metadata_name_value_pairs' => array(array('name' => 'signup_deadline', 'value' =>$modified_time, 'operand' => '>', 'case_sensitive' => 'false')), 'count' => 'true'));
+	$entities = elgg_get_entities_from_metadata(array('type' => 'object', 'subtype' => 'educourse', 'offset' => $offset, 'metadata_name_value_pairs' => array(array('name' => 'signup_deadline', 'value' => $modified_time, 'operand' => '>', 'case_sensitive' => 'false')), 'order_by_metadata' => array('name' => 'course_starting_date', 'direction' => 'DESC', 'as' => 'integer')));
+	unset($modified_time);
     $content .= elgg_view_entity_list($entities, $entities_count, $offset, false, false, true);
 
 	global $autofeed;
 	$autofeed = FALSE;
     $content = elgg_view_layout('two_column_left_sidebar', '', $title . $content);
-    page_draw(null, $content);
+	page_draw(null, $content);
+	unset($title);
+	unset($offset);
+	unset($content);
 ?>
