@@ -16,7 +16,7 @@
 
 			/*translation:%s by %s*/
 			$body .= '<em>' . sprintf(elgg_echo('edufeedr:blog:by'), date('d.m.Y G:i', $data['post']['date']), $data['post']['author']) . '</em>';
-			$body .= '<div id="educourse_post_content">' . $data['post']['content'] . '</div>';
+			$body .= '<div id="educourse_post_content">' . nl2br($data['post']['content']) . '</div>';
 			
 			// Hide post	
 			if ($vars['entity']->canEdit() && edufeedrCanEditEducourse($vars['entity'])) {
