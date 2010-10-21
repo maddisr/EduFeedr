@@ -42,7 +42,7 @@
 				$body .= $comment_content;
 			}
 		} else if ($type == 'viewpost'){
-			$body .= $vars['comment']['content'];
+			$body .= nl2br($vars['comment']['content']);
 		}
 		$body .= '</div>';
 		// Actions
