@@ -71,7 +71,7 @@
 		 	        'posts' => $posts,
 		 	        'comments' => $comments,
 		 	        'blogger_id' => $blogger_id,
-		 	        'status' => 'teacher'
+		 	        'status' => 'active'
 	            );
                 $es_result = $es->addParticipant($participant_data);
                 if (!$es_result) {
