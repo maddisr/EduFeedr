@@ -16,7 +16,7 @@
 	$entities_count = elgg_get_entities_from_metadata(array('type' => 'object', 'subtype' => 'educourse', 'metadata_name_value_pairs' => array(array('name' => 'course_ending_date', 'value' => $modified_time, 'operand' => '<', 'case_sensitive' => 'false')), 'count' => 'true'));
 	$entities = elgg_get_entities_from_metadata(array('type' => 'object', 'subtype' => 'educourse', 'offset' => $offset, 'metadata_name_value_pairs' => array(array('name' => 'course_ending_date', 'value' => $modified_time, 'operand' => '<', 'case_sensitive' => 'false')), 'order_by_metadata' => array('name' => 'course_starting_date', 'direction' => 'DESC', 'as' => 'integer')));
 	unset($modified_time);
-    $content .= elgg_view_entity_list($entities, $entities_count, $offset, false, false, true);
+    $content .= elgg_view_entity_list($entities, $entities_count, $offset , 10, false, false);
 
 	global $autofeed;
 	$autofeed = FALSE;
