@@ -11,7 +11,7 @@
 
 	if ($educourse->getSubtype() == 'educourse' && $educourse->canEdit() && edufeedrCanEditEducourse($educourse) && $id) {
 		$es = new EduSuckr();
-		$result = $es->hidePostById($id);
+		$result = $es->hidePostById(array($id, $guid));
 
 		if ($result) {
 			/*translation:Post hidden.*/

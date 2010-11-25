@@ -12,7 +12,7 @@
 
 	if ($educourse->getSubtype() == 'educourse' && $educourse->canEdit() && edufeedrCanEditEducourse($educourse) && $id) {
 		$es = new EduSuckr();
-		$result = $es->unhideCommentById($id);
+		$result = $es->unhideCommentById(array($id, $guid));
 
 		if ($result) {
 			/*translation:Comment restored.*/

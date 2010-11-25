@@ -11,7 +11,7 @@
 
 	if ($educourse->getSubtype() == 'educourse' && $educourse->canEdit() && edufeedrCanEditEducourse($educourse) && $id) {
 		$es = new EduSuckr();
-		$result = $es->hideCommentById($id);
+		$result = $es->hideCommentById(array($id, $guid));
 
 		if ($result) {
 			/*translation:Comment hidden.*/

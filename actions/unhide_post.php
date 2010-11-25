@@ -12,7 +12,7 @@
 
 	if ($educourse->getSubtype() == 'educourse' && $educourse->canEdit() && edufeedrCanEditEducourse($educourse) && $id) {
 		$es = new EduSuckr();
-		$result = $es->unhidePostById($id);
+		$result = $es->unhidePostById(array($id, $guid));
 
 		if ($result) {
 			/*translation:Post restored.*/

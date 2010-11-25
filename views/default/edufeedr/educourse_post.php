@@ -10,7 +10,7 @@
 
         // getting from EduSuckr
 		$es = new EduSuckr;
-        $data = $es->getCoursePostById($vars['post_id']);
+        $data = $es->getCoursePostById(array($vars['post_id'], $vars['entity']->guid));
 		if ($data) {
 			$body .= '<h4 style="padding-top: 15px;font-weight:bold;"><a href="' . $data['post']['link'] . '" target="_blank">' . $data['post']['title'] . '</a></h4>';
 
