@@ -82,7 +82,7 @@
     $teacher = $educourse->getOwnerEntity();
     $participant_id = insert_data("INSERT INTO {$CONFIG->dbprefix}edufeedr_course_participants (course_guid, firstname, lastname, email, blog, posts, comments, status) VALUES (".$educourse->getGUID().", 'Course', 'Blog', '".$teacher->email."', '$course_blog', '".$pc['posts']."', '".$pc['comments']."', 'teacher')");
     $teacher_data = array(
-	        'participant_id' => $participant_id,
+	        'participant_guid' => $participant_id,
 	        'course_guid' => $educourse->getGUID(),
 	        'firstname' => "Course",
 	        'lastname' => "Blog",
