@@ -10,7 +10,7 @@
 
     $content = "";
 
-	$offset = get_input('offset', 0);
+	$offset = (int) get_input('offset', 0);
 	// Database timestamps are 00.00.00, compensate asif the time was 23.59.59
 	$modified_time = time() - 86399;
 	$entities_count = elgg_get_entities_from_metadata(array('type' => 'object', 'subtype' => 'educourse', 'metadata_name_value_pairs' => array(array('name' => 'signup_deadline', 'value' =>$modified_time, 'operand' => '>', 'case_sensitive' => 'false')), 'count' => 'true'));
