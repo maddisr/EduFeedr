@@ -174,55 +174,10 @@
 			$message = elgg_echo('edufeedr:error:url:does:not:exist');
 			$returned['message'] = $message;
 			return $returned;
-		}
-
-        $simplepie_cache = get_plugin_setting('edufeedr_simplepie_cache', 'edufeedr');
-		$feed = new SimplePie();
-		$feed->set_feed_url($url);
-        if (empty($simplepie_cache)) {
-			$feed->enable_cache(false);
 		} else {
-			$feed->enable_cache(true);
-			$feed->set_cache_duration(1800);
-			$feed->set_cache_location($simplepie_cache);
-		}
-		$feed->set_output_encoding('UTF-8');
-		$feed->init();
-		$feed->handle_content_type();
-
-		if ($feed->error()) {
-			/*translation:Entered URL has no feed.*/
-			$message = elgg_echo('edufeedr:error:link:has:no:feed');
-			$returned['message'] = $message;
+			$returned['state'] = true;
 			return $returned;
 		}
-
-		$returned_data = array('title' => '', 'description' => '');
-
-		$items = $feed->get_items(0, 0);
-
-		foreach ($items as $item) {
-			if ($item->get_permalink() == $url) {
-				$returned_data['title'] = $item->get_title();
-				$returned_data['description'] = edufeedrShortenText($item->get_content(), 200);
-				$returned['state'] = true;
-				$returned['data'] = $returned_data;
-				return $returned;
-				// Destroy feed
-				$feed->__destruct();
-				unset($feed);
-				exit;
-			}
-		}
-
-		/*translation:Post not found in blog RSS.*/
-		$message = elgg_echo('edufeedr:error:post:not:found:in:feed');
-		$returned['message'] = $message;
-
-		// Destroy feed
-		$feed->__destruct();
-		unset($feed);
-
 		return $returned;
 	}
 
