@@ -342,3 +342,12 @@ table #participant {
 #educourse_post_content em, i {
     font-style: italic;
 }
+
+/* PROFILE */
+table#profile_data td:first-child , table#profile_posts td:first-child, table#profile_comments td:first-child {
+	min-width: 100px;
+}
+
+div.profile h3 {
+    background: none;
+}

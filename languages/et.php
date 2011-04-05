@@ -32,7 +32,8 @@
         File: /edufeedr/view_educourse.php
         File: /edufeedr/view_hidden.php
         File: /edufeedr/view_post.php
-        Lines: 32, 36, 33
+        File: /edufeedr/view_profile.php
+        Lines: 32, 36, 33, 28
         Text: Course feed
         _missing_translation_
         */
@@ -137,7 +138,8 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/educourse_blog.php
-        Lines: 17
+        File: /edufeedr/views/default/edufeedr/participant_profile.php
+        Lines: 17, 41
         Text: Comments
         _missing_translation_
         */
@@ -236,7 +238,8 @@
         File: /edufeedr/view_educourse.php
         File: /edufeedr/view_hidden.php
         File: /edufeedr/view_post.php
-        Lines: 48, 52, 49
+        File: /edufeedr/view_profile.php
+        Lines: 48, 52, 49, 44
         Text: Social network
         _missing_translation_
         */
@@ -270,7 +273,8 @@
         File: /edufeedr/view_educourse.php
         File: /edufeedr/view_hidden.php
         File: /edufeedr/view_post.php
-        Lines: 35, 39, 36
+        File: /edufeedr/view_profile.php
+        Lines: 35, 39, 36, 31
         Text: Course info
         _missing_translation_
         */
@@ -333,6 +337,14 @@
         _missing_translation_
         */
         "edufeedr:action:hide" => "hide",
+        
+        /* 
+        File: /edufeedr/views/default/edufeedr/participant_profile.php
+        Lines: 16
+        Text: E-mail
+        _missing_translation_
+        */
+        "edufeedr:profile:text:email" => "E-mail",
         
         /* 
         File: /edufeedr/actions/add_educourse.php
@@ -444,7 +456,8 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/educourse_blog.php
-        Lines: 14
+        File: /edufeedr/views/default/edufeedr/participant_profile.php
+        Lines: 14, 29
         Text: Blog posts
         _missing_translation_
         */
@@ -478,7 +491,8 @@
         File: /edufeedr/view_educourse.php
         File: /edufeedr/view_hidden.php
         File: /edufeedr/view_post.php
-        Lines: 90, 67, 64
+        File: /edufeedr/view_profile.php
+        Lines: 90, 67, 64, 59
         Text: Course not found
         _missing_translation_
         */
@@ -531,7 +545,8 @@
         File: /edufeedr/view_educourse.php
         File: /edufeedr/view_hidden.php
         File: /edufeedr/view_post.php
-        Lines: 42, 46, 43
+        File: /edufeedr/view_profile.php
+        Lines: 42, 46, 43, 38
         Text: Assignments
         _missing_translation_
         */
@@ -557,7 +572,8 @@
         File: /edufeedr/view_educourse.php
         File: /edufeedr/view_hidden.php
         File: /edufeedr/view_post.php
-        Lines: 45, 49, 46
+        File: /edufeedr/view_profile.php
+        Lines: 45, 49, 46, 41
         Text: Progress
         _missing_translation_
         */
@@ -648,7 +664,7 @@
         File: /edufeedr/actions/download_educourse_pa_csv.php
         File: /edufeedr/actions/download_educourse_sn_tsv.php
         File: /edufeedr/actions/download_educourse_vcard.php
-        Lines: 23, 48, 22, 23
+        Lines: 23, 50, 22, 23
         Text: Download failed.
         _missing_translation_
         */
@@ -685,6 +701,14 @@
         _missing_translation_
         */
         "edufeedr:action:download:posts:opml:file" => "OPML file with RSS feeds for blog posts",
+        
+        /* 
+        File: /edufeedr/views/default/edufeedr/participant_profile.php
+        Lines: 22
+        Text: Blog
+        _missing_translation_
+        */
+        "edufeedr:profile:text:blog" => "Blog",
         
         /* 
         File: /edufeedr/views/default/settings/edufeedr/edit.php
@@ -875,7 +899,8 @@
         File: /edufeedr/view_educourse.php
         File: /edufeedr/view_hidden.php
         File: /edufeedr/view_post.php
-        Lines: 39, 43, 40
+        File: /edufeedr/view_profile.php
+        Lines: 39, 43, 40, 35
         Text: Participants
         _missing_translation_
         */

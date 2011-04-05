@@ -130,6 +130,11 @@
 		case "faq":
 			include($CONFIG->pluginspath . 'edufeedr/edufeedr_faq.php');
 			break;
+        case "view_profile":
+			set_input('educourse', $page[1]);
+			set_input('participant_id', $page[2]);
+			include($CONFIG->pluginspath . 'edufeedr/view_profile.php');
+			break;
 		default:
 			include($CONFIG->pluginspath . 'edufeedr/index.php');
 			break;
