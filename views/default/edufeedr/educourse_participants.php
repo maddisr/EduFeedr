@@ -37,6 +37,8 @@
             $body .= '<li><a href="' . $vars['url'] . 'action/edufeedr/download_educourse_opml?educourse=' . $vars['entity']->getGUID() . '&type=posts&__elgg_ts=' . $ts . '&__elgg_token=' . $token . '">' . elgg_echo('edufeedr:action:download:posts:opml:file') . '</a></li>';
         /*translation:OPML file with RSS feeds for blog comments*/
             $body .= '<li><a href="' . $vars['url'] . 'action/edufeedr/download_educourse_opml?educourse=' . $vars['entity']->getGUID() . '&type=comments&__elgg_ts=' . $ts . '&__elgg_token=' . $token . '">' . elgg_echo('edufeedr:action:download:comments:opml:file') . '</a></li>';
+			/*translation:CSV file with list of participants and assignments*/
+            $body .= '<li><a href="' . elgg_add_action_tokens_to_url($vars['url'] . 'action/edufeedr/download_educourse_pa_csv?educourse=' . $vars['entity']->getGUID()) . '">' . elgg_echo('edufeedr:action:download:participants:assignments:csv:file') . '</a></li>';
 			$body .= '</ul>';
             $body .= '</div>';
 

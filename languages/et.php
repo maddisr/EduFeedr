@@ -161,7 +161,7 @@
         
         /* 
         File: /edufeedr/api.php
-        Lines: 281
+        Lines: 195
         Text: Entered URL has no feed.
         _missing_translation_
         */
@@ -210,7 +210,7 @@
         File: /edufeedr/actions/join_educourse.php
         File: /edufeedr/actions/remove_assignment.php
         File: /edufeedr/actions/remove_participant.php
-        Lines: 337, 52, 80, 98, 55, 97, 79, 81, 24, 26
+        Lines: 251, 52, 80, 98, 55, 97, 79, 81, 24, 26
         Text: Error occured, object could not be sent to EduSuckr.
         _missing_translation_
         */
@@ -620,8 +620,16 @@
         "edufeedr:explanation:can_be_used_in" => "(can be used in %s)",
         
         /* 
+        File: /edufeedr/views/default/edufeedr/educourse_participants.php
+        Lines: 41
+        Text: CSV file with list of participants and assignments
+        _missing_translation_
+        */
+        "edufeedr:action:download:participants:assignments:csv:file" => "CSV file with list of participants and assignments",
+        
+        /* 
         File: /edufeedr/api.php
-        Lines: 305
+        Lines: 219
         Text: Post not found in blog RSS.
         _missing_translation_
         */
@@ -637,9 +645,10 @@
         
         /* 
         File: /edufeedr/actions/download_educourse_opml.php
+        File: /edufeedr/actions/download_educourse_pa_csv.php
         File: /edufeedr/actions/download_educourse_sn_tsv.php
         File: /edufeedr/actions/download_educourse_vcard.php
-        Lines: 23, 22, 23
+        Lines: 23, 48, 22, 23
         Text: Download failed.
         _missing_translation_
         */
@@ -946,7 +955,7 @@
         
         /* 
         File: /edufeedr/api.php
-        Lines: 260
+        Lines: 174
         Text: Entered URL does not exist.
         _missing_translation_
         */
@@ -1047,7 +1056,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/educourse_participants.php
-        Lines: 45
+        Lines: 47
         Text: Blogroll
         _missing_translation_
         */

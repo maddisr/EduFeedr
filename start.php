@@ -172,6 +172,7 @@
 	register_action('edufeedr/download_educourse_vcard', false, $CONFIG->pluginspath . 'edufeedr/actions/download_educourse_vcard.php');
 	register_action('edufeedr/download_educourse_opml', true, $CONFIG->pluginspath . 'edufeedr/actions/download_educourse_opml.php');
 	register_action('edufeedr/download_educourse_sn_tsv', true, $CONFIG->pluginspath . 'edufeedr/actions/download_educourse_sn_tsv.php');
+	register_action('edufeedr/download_educourse_pa_csv', true, $CONFIG->pluginspath . 'edufeedr/actions/download_educourse_pa_csv.php');
 	register_action('edufeedr/edit_participant', false, $CONFIG->pluginspath . 'edufeedr/actions/edit_participant.php');
 	register_action('edufeedr/add_assignment', false, $CONFIG->pluginspath . 'edufeedr/actions/add_assignment.php');
 	register_action('edufeedr/edit_assignment', false, $CONFIG->pluginspath . 'edufeedr/actions/edit_assignment.php');
