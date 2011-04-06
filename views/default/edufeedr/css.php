@@ -352,6 +352,8 @@ div.profile h3 {
     background: none;
 }
 
-div.profile table#profile_data img.profile_avatar {
-    margin: 0 0 5px;
+div.profile img.profile_avatar {
+	margin: 15px 0 0;
+    width: 54px;
+    height: 54px;
 }
