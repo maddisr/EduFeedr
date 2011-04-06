@@ -35,7 +35,7 @@
 
 		$posts = array();// TODO Populate me
 		/*translation:Blog posts*/
-		$body .= '<h3>'.elgg_echo('edufeedr:latest:posts').' ('.sizeof($posts).')</h3>';
+		$body .= '<h3>'.elgg_echo('edufeedr:latest:posts').' ('.sizeof($posts).'):</h3>';
 		if (is_array($posts) && sizeof($posts)>0) {
 			$body .= '<table id="profile_posts"><tbody>';
 			foreach ($posts as $post) {
@@ -47,7 +47,7 @@
 
         $comments = array();// TODO Populate me
 		/*translation:Comments*/
-		$body .= '<h3>'.elgg_echo('edufeedr:latest:comments').' ('.sizeof($comments).')</h3>';
+		$body .= '<h3>'.elgg_echo('edufeedr:latest:comments').' ('.sizeof($comments).'):</h3>';
         if (is_array($comments) && sizeof($comments)>0) {
 			$body .= '<table id="profile_comments"><tbody>';
 			foreach ($comments as $comment) {
