@@ -351,3 +351,7 @@ table#profile_data td:first-child , table#profile_posts td:first-child, table#pr
 div.profile h3 {
     background: none;
 }
+
+div.profile table#profile_data img.profile_avatar {
+    margin: 0 0 5px;
+}

@@ -10,6 +10,12 @@
 		$body .= '<h3>'.$vars['participant']->firstname.' '.$vars['participant']->lastname.'</h3>';
 
 		$body .= '<table id="profile_data"><tbody>';
+		$avatar_href = "http://gravatar.com/avatar/".md5(trim($vars['participant']->email))."?s=54";
+		if ($avatar_data = file_get_contents($avatar_href)) {
+			$body .= '<tr>';
+			$body .= '<td colspan="2"><img class="profile_avatar" src="data:image/jpeg;base64,'.base64_encode($avatar_data).'" alt="avatar" /></td>';
+			$body .= '</tr>';
+		}
 		if (edufeedrCanEditEducourse($vars['entity'])) {
 			$body .= '<tr>';
 		    /*translation:E-mail*/
