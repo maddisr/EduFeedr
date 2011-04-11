@@ -354,6 +354,6 @@ div.profile h3 {
 
 div.profile img.profile_avatar {
 	margin: 15px 0 0;
-    width: 54px;
-    height: 54px;
+    width: 128px;
+    height: 128px;
 }

@@ -8,7 +8,7 @@
 
 		$body .= '<div class="profile">';
         
-		$avatar_href = "http://gravatar.com/avatar/".md5(trim($vars['participant']->email))."?s=54";
+		$avatar_href = "http://gravatar.com/avatar/".md5(trim($vars['participant']->email))."?s=128";
 		if ($avatar_data = file_get_contents($avatar_href)) {
 			$body .= '<img class="profile_avatar" src="data:image/jpeg;base64,'.base64_encode($avatar_data).'" alt="avatar" />';
 		}
