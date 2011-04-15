@@ -72,8 +72,8 @@
                      "signup_deadline"=>edufeedrDateIntoTimestamp($signup_deadline),
                      "course_starting_date"=>edufeedrDateIntoTimestamp($course_starting_date),
 					 "course_ending_date"=>edufeedrDateIntoTimestamp($course_ending_date),
-					 "start_aggregate"=>edufeedrDateIntoTimestamp($course_starting_date) - (86400 * 7),
-					 "stop_aggregate"=>edufeedrDateIntoTimestamp($course_ending_date) + (86400 * 14)
+					 "start_agregate"=>edufeedrDateIntoTimestamp($course_starting_date) - (86400 * 7),
+					 "stop_agregate"=>edufeedrDateIntoTimestamp($course_ending_date) + (86400 * 14)
                     );
     if (!$es->setEduCourse($es_data)) {
         /*translation:Error occured, object could not be sent to EduSuckr.*/
