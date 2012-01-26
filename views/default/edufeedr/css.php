@@ -190,7 +190,6 @@ html {
 }
 
 #layout_footer {
-	display: none;
 }
 
 /* Progress table */
