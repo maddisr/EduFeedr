@@ -101,6 +101,10 @@
 			return $comments;
         }
 
+		function getParticipantPosts($param) {
+			return unserialize($this->client->call('getParticipantPosts', array($param)));
+		}
+
     }
 
 ?>

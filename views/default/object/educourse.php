@@ -39,7 +39,7 @@
         $body .= '<label>'.elgg_echo('edufeedr:educourse:starting:date').':</label>';
 	    $body .= '<div class="edufeedr_date">';
 	    $body .= elgg_view('output/calendar', array('value' => $vars['entity']->course_starting_date));
-	    $body .= '</div';
+	    $body .= '</div>';
         /*translation:Ending date*/
         $body .= '<label>'.elgg_echo('edufeedr:educourse:ending:date').':</label>';
 	    $body .= '<div class="edufeedr_date">';

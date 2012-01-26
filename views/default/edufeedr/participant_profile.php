@@ -33,7 +33,10 @@
         // getting from EduSuckr
 		$es = new EduSuckr;
 
-		$posts = array();// TODO Populate me
+		$posts = $es->getParticipantPosts(array($vars['entity']->guid, $vars['participant']->blog));
+		if (!($posts && is_array($posts))) {
+			$posts = array();
+		}
 		/*translation:Blog posts*/
 		$body .= '<h3>'.elgg_echo('edufeedr:latest:posts').' ('.sizeof($posts).'):</h3>';
 		if (is_array($posts) && sizeof($posts)>0) {
