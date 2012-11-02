@@ -340,6 +340,10 @@ table #participant {
 
 #educourse_post_content em, i {
     font-style: italic;
+    display: inline;
+    color: #333;
+    font-size: 100%;
+    padding-bottom: 0px;
 }
 
 /* PROFILE */
