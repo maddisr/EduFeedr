@@ -207,8 +207,14 @@ html {
     height: 16px;
 }
 
-ul.progress_meanings {
-    list-style: inherit;
+div.progress_meanings {
+    margin-top: 20px;
+}
+
+div.progress_meanings img {
+    width: 24px;
+    height: 16px;
+    vertical-align: middle;
 }
 
 table #participant {

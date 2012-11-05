@@ -4,7 +4,6 @@
 		$body = "";
 		$body .= '<div class="educourse">';
 		$body .= '<h3>' . $vars['entity']->title . '</h3>';
-        $body .= elgg_view('helpers/educourse_progress_label_meanings');
         $es = new EduSuckr;
         $body_data = unserialize($es->getProgressTable($vars['entity']->getGUID()));   
         $body .= '<table id="educourse_progress_table">';
@@ -33,6 +32,7 @@
 			$body .= '</tbody>';
 			$body .= '</table>';
 
+        $body .= elgg_view('helpers/educourse_progress_label_meanings');
 		$body .= '</div>';//educourse ends
 
 		echo $body;

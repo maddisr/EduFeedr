@@ -1,16 +1,24 @@
 <?php
+$meanings = array(
+    array(
+        'image' => 'assignment_done.png',
+        'alt' => 'linked',
+        /*translation:blog post linked to the assignment*/
+        'text' => elgg_echo('edufeedr:progress:meaning:text:linked')
+    ),
+    array(
+        'image' => 'assignment_time_frame.png',
+        'alt' => 'during_period',
+        /*translation:blog post during the assignment period*/
+        'text' => elgg_echo('edufeedr:progress:meaning:text:during_period')
+    )
+);
 ?>
-<ul class="progress_meanings">
-    <li>
-    <?php
-        /*translation:Dark blue box - blog post linked to the assignment*/
-        echo elgg_echo('edufeedr:progress:meaning:linked');
-    ?>
-    </li>
-    <li>
-    <?php
-        /*translation:Light blue box - blog post during the assignment period*/
-        echo elgg_echo('edufeedr:progress:meaning:during_period');
-    ?>
-    </li>
-</ul>
+<div class="progress_meanings">
+<?php foreach ($meanings as $single): ?>
+    <div>
+        <img src="<?php echo $vars['url']; ?>mod/edufeedr/views/default/graphics/<?php echo $single['image']; ?>" alt="<?php echo $single['alt']; ?>" />
+        <?php echo $single['text']; ?>
+    </div>
+<?php endforeach; ?>
+</div>
