@@ -29,11 +29,9 @@
         "edufeedr:submenu:add:educourse" => "Add course",
         
         /* 
-        File: /edufeedr/view_educourse.php
         File: /edufeedr/view_hidden.php
-        File: /edufeedr/view_post.php
-        File: /edufeedr/view_profile.php
-        Lines: 32, 36, 33, 28
+        File: /edufeedr/views/default/helpers/educourse_tabs.php
+        Lines: 36, 16
         Text: Course feed
         _missing_translation_
         */
@@ -139,7 +137,7 @@
         /* 
         File: /edufeedr/views/default/edufeedr/educourse_blog.php
         File: /edufeedr/views/default/edufeedr/participant_profile.php
-        Lines: 17, 41
+        Lines: 17, 53
         Text: Comments
         _missing_translation_
         */
@@ -235,11 +233,9 @@
         "edufeedr:blog:comments" => "%s comments",
         
         /* 
-        File: /edufeedr/view_educourse.php
         File: /edufeedr/view_hidden.php
-        File: /edufeedr/view_post.php
-        File: /edufeedr/view_profile.php
-        Lines: 48, 52, 49, 44
+        File: /edufeedr/views/default/helpers/educourse_tabs.php
+        Lines: 52, 32
         Text: Social network
         _missing_translation_
         */
@@ -270,11 +266,9 @@
         "edufeedr:message:assignment:added" => "Assignment added to course %s",
         
         /* 
-        File: /edufeedr/view_educourse.php
         File: /edufeedr/view_hidden.php
-        File: /edufeedr/view_post.php
-        File: /edufeedr/view_profile.php
-        Lines: 35, 39, 36, 31
+        File: /edufeedr/views/default/helpers/educourse_tabs.php
+        Lines: 39, 19
         Text: Course info
         _missing_translation_
         */
@@ -340,7 +334,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/participant_profile.php
-        Lines: 16
+        Lines: 22
         Text: E-mail
         _missing_translation_
         */
@@ -439,6 +433,14 @@
         "edufeedr:blog:by" => "%s by %s",
         
         /* 
+        File: /edufeedr/views/default/helpers/educourse_progress_label_meanings.php
+        Lines: 7
+        Text: Dark blue box - blog post linked to the assignment
+        _missing_translation_
+        */
+        "edufeedr:progress:meaning:linked" => "Dark blue box - blog post linked to the assignment",
+        
+        /* 
         File: /edufeedr/views/default/settings/edufeedr/edit.php
         Lines: 30
         Text: WSDL Credentials for EduSuckr
@@ -457,7 +459,7 @@
         /* 
         File: /edufeedr/views/default/edufeedr/educourse_blog.php
         File: /edufeedr/views/default/edufeedr/participant_profile.php
-        Lines: 14, 29
+        Lines: 14, 41
         Text: Blog posts
         _missing_translation_
         */
@@ -492,7 +494,7 @@
         File: /edufeedr/view_hidden.php
         File: /edufeedr/view_post.php
         File: /edufeedr/view_profile.php
-        Lines: 90, 67, 64, 59
+        Lines: 66, 67, 37, 32
         Text: Course not found
         _missing_translation_
         */
@@ -542,11 +544,9 @@
         "edufeedr:post:write:a:comment" => "Post a comment",
         
         /* 
-        File: /edufeedr/view_educourse.php
         File: /edufeedr/view_hidden.php
-        File: /edufeedr/view_post.php
-        File: /edufeedr/view_profile.php
-        Lines: 42, 46, 43, 38
+        File: /edufeedr/views/default/helpers/educourse_tabs.php
+        Lines: 46, 26
         Text: Assignments
         _missing_translation_
         */
@@ -569,11 +569,9 @@
         "edufeedr:title:edit_assignment" => "Edit assignment",
         
         /* 
-        File: /edufeedr/view_educourse.php
         File: /edufeedr/view_hidden.php
-        File: /edufeedr/view_post.php
-        File: /edufeedr/view_profile.php
-        Lines: 45, 49, 46, 41
+        File: /edufeedr/views/default/helpers/educourse_tabs.php
+        Lines: 49, 29
         Text: Progress
         _missing_translation_
         */
@@ -687,6 +685,14 @@
         "edufeedr:post_comment_commenter_to_poster" => "%s to %s",
         
         /* 
+        File: /edufeedr/views/default/helpers/educourse_progress_label_meanings.php
+        Lines: 13
+        Text: Light blue box - blog post during the assignment period
+        _missing_translation_
+        */
+        "edufeedr:progress:meaning:during_period" => "Light blue box - blog post during the assignment period",
+        
+        /* 
         File: /edufeedr/actions/join_educourse.php
         Lines: 85
         Text: Participant could not be added to course %s
@@ -704,7 +710,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/participant_profile.php
-        Lines: 22
+        Lines: 28
         Text: Blog
         _missing_translation_
         */
@@ -800,7 +806,7 @@
         
         /* 
         File: /edufeedr/actions/delete_educourse.php
-        Lines: 22
+        Lines: 23
         Text: Course could not be deleted.
         _missing_translation_
         */
@@ -896,11 +902,9 @@
         "edufeedr:label:deadline" => "Deadline",
         
         /* 
-        File: /edufeedr/view_educourse.php
         File: /edufeedr/view_hidden.php
-        File: /edufeedr/view_post.php
-        File: /edufeedr/view_profile.php
-        Lines: 39, 43, 40, 35
+        File: /edufeedr/views/default/helpers/educourse_tabs.php
+        Lines: 43, 23
         Text: Participants
         _missing_translation_
         */

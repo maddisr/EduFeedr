@@ -207,6 +207,10 @@ html {
     height: 16px;
 }
 
+ul.progress_meanings {
+    list-style: inherit;
+}
+
 table #participant {
 	width: auto;
 	padding-right: 15px;
