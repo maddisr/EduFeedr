@@ -33,6 +33,13 @@
 			register_error(elgg_echo('edufeedr:error:blank:fields'));
 			forward('pg/edufeedr/edit_participant/' . $guid . '/' . $participant_id );
 		} else {
+            // See if blog needs fixing
+            $fixed_blog = edufeedrFixIncorrectBlogAddress($blog);
+            if ($blog != $fixed_blog) {
+                $blog = $fixed_blog;
+                /*translation:Blog address was corrected.*/
+                system_message(elgg_echo('edufeedr:message:blog_address_corrected'));
+            }
 			$feeds = edufeedrGetBlogFeeds($blog);
 			if (!($feeds || is_array($feeds))) {
 				/*translation:Provided url was not a blog or your blog engine is not supported.*/
@@ -82,9 +89,6 @@
 				/*translation:Participant information could not be changed.*/
 				register_error(elgg_echo('edufeedr:error:participant:could:not:be:changed'));
 			}
-
-			/*translation:Participant information changed.*/
-			system_message(elgg_echo('edufeedr:message:participant:changed'));
 
 			// Clear cache
 			unset($_SESSION['join_firstname']);

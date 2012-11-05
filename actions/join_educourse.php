@@ -39,6 +39,13 @@
 			register_error(elgg_echo('edufeedr:error:blank:fields'));
 			forward('pg/edufeedr/join/' . $guid);
 		} else {
+            // See if blog needs fixing
+            $fixed_blog = edufeedrFixIncorrectBlogAddress($blog);
+            if ($blog != $fixed_blog) {
+                $blog = $fixed_blog;
+                /*translation:Blog address was corrected.*/
+                system_message(elgg_echo('edufeedr:message:blog_address_corrected'));
+            }
 			// See if provided blog is acceptable
 			$feeds = edufeedrGetBlogFeeds($blog);
 			if (!$feeds || !is_array($feeds)) {

@@ -99,38 +99,112 @@
 			);
 	}
 
-	function edufeedrGetBlogFeeds($url) {
-
-		$add_url_end = strcmp("/", substr($url, -1));
-		if ($add_url_end) {
-			$url = $url . "/";
-		}
-		$tags = get_meta_tags($url);
+    /**
+     * Determines blog generator. Uses meta tags as much as possible.
+     *
+     * @param string $url URL of the blog
+     * 
+     * @return mixed Genrator string or false
+     */
+    function edufeedrGetBlogGenerator($url) {
+        $generator = "";
+        $tags = get_meta_tags($url);
 
 		if (array_key_exists('generator', $tags)) {
 		    $generator = $tags['generator'];
 		    $generator = strtolower($generator);
 		} else {
 			if (__edufeedrGetUrlExists($url)) {
-			    if (strrpos($url, 'edublogs.org/') === strlen($url) - strlen('edublogs.org/'))
-				    $generator = 'wordpress';
-			    else
-				    return false;
-			} else {
-				return false;
+                if (strrpos($url, 'edublogs.org/') === strlen($url) - strlen('edublogs.org/')) {
+                    $generator = 'wordpress';
+                }
 			}
 		}
 
-		$suitable_generators = edufeedrGetSuitableGenerators();
+        if ($generator) {
+            return $generator;
+        }
+        return false;
+    }
 
-		foreach ($suitable_generators as $key => $sg) {
-			if (substr_count($generator, $key) > 0) {
-				return array('posts' => $url . $sg['posts'], 'comments' => $url . $sg['comments']);
-			}
+    /**
+     * Tries to determine blog posts and comments feeds.
+     *
+     * @param string $url URL of the blog
+     *
+     * @return mixed Array with feed locations or false
+     */
+	function edufeedrGetBlogFeeds($url) {
+
+		$add_url_end = strcmp("/", substr($url, -1));
+		if ($add_url_end) {
+			$url = $url . "/";
 		}
 
-		return false;
-	}
+        $generator = edufeedrGetBlogGenerator($url);
+        if (!$generator) {
+            return false;
+        }
+        
+        $suitable_generators = edufeedrGetSuitableGenerators();
+
+        foreach ($suitable_generators as $key => $sg) {
+            if (substr_count($generator, $key) > 0) {
+                return array('posts' => $url . $sg['posts'], 'comments' => $url . $sg['comments']);
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Builds and returns a URL from parts provided.
+     * The parts should mostly come from parse_url usage.
+     *
+     * @param array $parts Parts of the URL to be used
+     *
+     * @return string
+     */
+    function edufeedrHttpBuildUrl(array $parts) {
+        $scheme = isset($parts['scheme']) ? "{$parts['scheme']}://" : '';
+        $host = isset($parts['host']) ? "{$parts['host']}" : '';
+        $port = isset($parts['port']) ? ":{$parts['port']}" : '';
+        $path = isset($parts['path']) ? "{$parts['path']}" : '';
+        $query = isset($parts['query']) ? "?{$parts['query']}" : '';
+
+        return $scheme.$host.$port.$path.$query;
+    }
+
+    /**
+     * Determines if provided blog URL should be fixed.
+     * Fixes as needed and returns the URL.
+     *
+     * @param string $blog_url URL of the blog
+     *
+     * @return string
+     */
+    function edufeedrFixIncorrectBlogAddress($blog_url) {
+        $parts = parse_url($blog_url);
+        if ( $parts && is_array($parts) && (sizeof($parts) > 0) ) {
+            $generator = edufeedrGetBlogGenerator($blog_url);
+            if ($generator) {
+                if ($generator == 'wordpress.com') {
+                    if ( isset($parts['scheme']) && ($parts['scheme'] == 'https') ) {
+                        $parts['scheme'] = 'http';
+                        $blog_url = edufeedrHttpBuildUrl($parts);
+                    }
+                } elseif ($generator == 'blogger') {
+                    if (strpos($parts['host'], 'www.') === 0) {
+                        $parts['host'] = substr($parts['host'], 4);
+                        $blog_url = edufeedrHttpBuildUrl($parts);
+                    }
+                }
+
+            }
+        }
+
+        return $blog_url;
+    }
 
 	// Feed parsing methods and helpers
 

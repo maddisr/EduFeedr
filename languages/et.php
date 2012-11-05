@@ -71,7 +71,7 @@
         
         /* 
         File: /edufeedr/actions/join_educourse.php
-        Lines: 64
+        Lines: 71
         Text: You have joined the course %s
         _missing_translation_
         */
@@ -112,7 +112,7 @@
         
         /* 
         File: /edufeedr/actions/edit_participant.php
-        Lines: 83
+        Lines: 90
         Text: Participant information could not be changed.
         _missing_translation_
         */
@@ -161,7 +161,7 @@
         
         /* 
         File: /edufeedr/api.php
-        Lines: 195
+        Lines: 269
         Text: Entered URL has no feed.
         _missing_translation_
         */
@@ -218,7 +218,7 @@
         File: /edufeedr/actions/join_educourse.php
         File: /edufeedr/actions/remove_assignment.php
         File: /edufeedr/actions/remove_participant.php
-        Lines: 251, 52, 80, 98, 55, 89, 79, 81, 24, 26
+        Lines: 325, 52, 80, 98, 55, 89, 86, 88, 24, 26
         Text: Error occured, object could not be sent to EduSuckr.
         _missing_translation_
         */
@@ -316,7 +316,7 @@
         
         /* 
         File: /edufeedr/actions/edit_participant.php
-        Lines: 50
+        Lines: 57
         Text: This url was not a blogger profile or you made mistakes when typing.
         _missing_translation_
         */
@@ -407,7 +407,7 @@
         
         /* 
         File: /edufeedr/actions/join_educourse.php
-        Lines: 53
+        Lines: 60
         Text: You can not register to the course with the same blog twice.
         _missing_translation_
         */
@@ -439,6 +439,15 @@
         _missing_translation_
         */
         "edufeedr:blog:by" => "%s by %s",
+        
+        /* 
+        File: /edufeedr/actions/edit_participant.php
+        File: /edufeedr/actions/join_educourse.php
+        Lines: 41, 47
+        Text: Blog address was corrected.
+        _missing_translation_
+        */
+        "edufeedr:message:blog_address_corrected" => "Blog address was corrected.",
         
         /* 
         File: /edufeedr/views/default/settings/edufeedr/edit.php
@@ -528,7 +537,7 @@
         File: /edufeedr/actions/add_educourse.php
         File: /edufeedr/actions/edit_participant.php
         File: /edufeedr/actions/join_educourse.php
-        Lines: 36, 39, 46
+        Lines: 36, 46, 53
         Text: Provided url was not a blog or your blog engine is not supported.
         _missing_translation_
         */
@@ -642,7 +651,7 @@
         
         /* 
         File: /edufeedr/api.php
-        Lines: 219
+        Lines: 293
         Text: Post not found in blog RSS.
         _missing_translation_
         */
@@ -685,7 +694,7 @@
         
         /* 
         File: /edufeedr/actions/join_educourse.php
-        Lines: 85
+        Lines: 92
         Text: Participant could not be added to course %s
         _missing_translation_
         */
@@ -862,7 +871,7 @@
         /* 
         File: /edufeedr/actions/edit_participant.php
         File: /edufeedr/actions/edit_participant.php
-        Lines: 62, 87
+        Lines: 69, 94
         Text: Participant information changed.
         _missing_translation_
         */
@@ -983,7 +992,7 @@
         
         /* 
         File: /edufeedr/api.php
-        Lines: 174
+        Lines: 248
         Text: Entered URL does not exist.
         _missing_translation_
         */
