@@ -192,6 +192,14 @@
         "edufeedr:message:post_hidden" => "Post hidden.",
         
         /* 
+        File: /edufeedr/views/default/helpers/educourse_progress_label_meanings.php
+        Lines: 13
+        Text: blog post during the assignment period
+        _missing_translation_
+        */
+        "edufeedr:progress:meaning:text:during_period" => "blog post during the assignment period",
+        
+        /* 
         File: /edufeedr/start.php
         Lines: 53
         Text: Ended courses
@@ -431,14 +439,6 @@
         _missing_translation_
         */
         "edufeedr:blog:by" => "%s by %s",
-        
-        /* 
-        File: /edufeedr/views/default/helpers/educourse_progress_label_meanings.php
-        Lines: 7
-        Text: Dark blue box - blog post linked to the assignment
-        _missing_translation_
-        */
-        "edufeedr:progress:meaning:linked" => "Dark blue box - blog post linked to the assignment",
         
         /* 
         File: /edufeedr/views/default/settings/edufeedr/edit.php
@@ -685,14 +685,6 @@
         "edufeedr:post_comment_commenter_to_poster" => "%s to %s",
         
         /* 
-        File: /edufeedr/views/default/helpers/educourse_progress_label_meanings.php
-        Lines: 13
-        Text: Light blue box - blog post during the assignment period
-        _missing_translation_
-        */
-        "edufeedr:progress:meaning:during_period" => "Light blue box - blog post during the assignment period",
-        
-        /* 
         File: /edufeedr/actions/join_educourse.php
         Lines: 85
         Text: Participant could not be added to course %s
@@ -763,6 +755,14 @@
         _missing_translation_
         */
         "edufeedr:title:ongoing:courses" => "Ongoing courses",
+        
+        /* 
+        File: /edufeedr/views/default/helpers/educourse_progress_label_meanings.php
+        Lines: 7
+        Text: blog post linked to the assignment
+        _missing_translation_
+        */
+        "edufeedr:progress:meaning:text:linked" => "blog post linked to the assignment",
         
         /* 
         File: /edufeedr/views/default/edufeedr/educourse_facilitators.php
