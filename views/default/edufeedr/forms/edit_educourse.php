@@ -2,26 +2,28 @@
 
     if (isset($vars['entity'])) {
         $action = 'edufeedr/edit_educourse';
-	$title = $vars['entity']->title;
-	$description = $vars['entity']->description;
-	$course_tag = $vars['entity']->course_tag;
-	$course_blog = $vars['entity']->course_blog;
-	$course_wiki = $vars['entity']->course_wiki;
-	$signup_deadline = $vars['entity']->signup_deadline;
-	$course_starting_date = $vars['entity']->course_starting_date;
-	$course_ending_date = $vars['entity']->course_ending_date;
-	$start_aggregate = $vars['entity']->start_aggregate;
-	$stop_aggregate = $vars['entity']->stop_aggregate;
+        $title = $vars['entity']->title;
+        $description = $vars['entity']->description;
+        $course_tag = $vars['entity']->course_tag;
+        $course_blog = $vars['entity']->course_blog;
+        $course_wiki = $vars['entity']->course_wiki;
+        $signup_deadline = $vars['entity']->signup_deadline;
+        $course_starting_date = $vars['entity']->course_starting_date;
+        $course_ending_date = $vars['entity']->course_ending_date;
+        $start_aggregate = $vars['entity']->start_aggregate;
+        $stop_aggregate = $vars['entity']->stop_aggregate;
+        $is_edit = true;
     } else {
         $action = 'edufeedr/add_educourse';
-	$title = '';
-	$description = '';
-	$course_tag = '';
-	$course_blog = 'http://'; // prefill for URL
-	$course_wiki = 'http://'; // prefill for URL
-	$signup_deadline = '';
-	$course_starting_date = '';
-	$course_ending_date = '';
+        $title = '';
+        $description = '';
+        $course_tag = '';
+        $course_blog = 'http://'; // prefill for URL
+        $course_wiki = 'http://'; // prefill for URL
+        $signup_deadline = '';
+        $course_starting_date = '';
+        $course_ending_date = '';
+        $is_edit = false;
     }
 
     // Get cached values, if there are any
@@ -64,7 +66,12 @@
 
     /*translation:Course blog*/
     $course_blog_label = elgg_echo('edufeedr:label:course:blog_url');
-    $course_blog_input = elgg_view('input/url', array('internalname' => 'course_blog', 'value' => $course_blog));
+    $course_blog_input_params = array('internalname' => 'course_blog', 'value' => $course_blog);
+    // Course blog URL can not be changed
+    if ($is_edit) {
+        $course_blog_input_params['disabled'] = true;
+    }
+    $course_blog_input = elgg_view('input/url', $course_blog_input_params);
 
     /*translation:Course website or wiki*/
     $course_wiki_label = elgg_echo('edufeedr:label:course:wiki_url');

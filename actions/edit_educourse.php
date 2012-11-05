@@ -9,7 +9,6 @@
     $title = get_input('course_title');
     $description = get_input('course_description');
     $course_tag = get_input('course_tag');
-    $course_blog = get_input('course_blog');
     $course_wiki = get_input('course_wiki');
     $signup_deadline = get_input('signup_deadline');
     $course_starting_date = get_input('course_starting_date');
@@ -24,7 +23,6 @@
         $_SESSION['educourse_title'] = $title;
         $_SESSION['educourse_description'] = $description;
         $_SESSION['educourse_course_tag'] = $course_tag;
-        $_SESSION['educourse_course_blog'] = $course_blog;
         $_SESSION['educourse_course_wiki'] = $course_wiki;
         $_SESSION['educourse_signup_deadline'] = $signup_deadline;
         $_SESSION['educourse_course_starting_date'] = $course_starting_date;
@@ -33,17 +31,11 @@
 		$_SESSION['stop_aggregate'] = $stop_aggregate;
 
         // Make sure all required data is provided
-        if (empty($title) || empty($description) || empty($course_tag) || empty($course_blog) || empty($signup_deadline) || empty($course_starting_date) || empty($course_ending_date) || empty($start_aggregate) || empty($stop_aggregate)) {
+        if (empty($title) || empty($description) || empty($course_tag) || empty($signup_deadline) || empty($course_starting_date) || empty($course_ending_date) || empty($start_aggregate) || empty($stop_aggregate)) {
             /*translation:Please fill all required fields.*/
             register_error(elgg_echo('edufeedr:error:blank:fields'));
 	    forward('pg/edufeedr/edit_educourse/' . $guid);
         } else {
-            $feeds = edufeedrGetBlogFeeds($course_blog);
-			if (!$feeds || !is_array($feeds)) {
-				/*translation:Provided url was not a blog or your blog engine is not supported.*/
-				register_error(elgg_echo('edufeedr:error:engine:not:supported'));
-				forward('pg/edufeedr/edit_educourse/' . $guid);
-			}
 			// Additional condition to check aggregating start and end
 			if ((edufeedrDateIntoTimestamp($course_starting_date) < edufeedrDateIntoTimestamp($start_aggregate)) || (edufeedrDateIntoTimestamp($course_ending_date) > edufeedrDateIntoTimestamp($stop_aggregate))) {
 				/*translation: Please check aggregation start and end dates. Aggregation can not start after the course starts and it can not end before the course ends.*/
@@ -61,8 +53,6 @@
 	    }
 	    $educourse->clearMetadata('course_tag');
 	    $educourse->course_tag = $course_tag;
-	    $educourse->clearMetadata('course_blog');
-	    $educourse->course_blog = $course_blog;
 	    $educourse->clearMetadata('course_wiki');
 	    $educourse->course_wiki = $course_wiki;
 	    $educourse->clearMetadata('signup_deadline');
@@ -77,14 +67,16 @@
 		$educourse->stop_aggregate = edufeedrDateIntoTimestamp($stop_aggregate);
 
         $es = new EduSuckr;
-        $pc = edufeedrGetBlogFeeds($course_blog);
+        // Please note that course_blog address remains the same
+        // Probably should also change the EduSuckr component in the future
+        $pc = edufeedrGetBlogFeeds($educourse->course_blog);
         $es_data = array("course_guid"=>$educourse->getGUID(),
                          "title"=>$title,
                          "description"=>$description,
                          "posts"=>$pc['posts'],
                          "comments"=>$pc['comments'],
                          "course_tag"=>$course_tag,
-                         "course_blog"=>$course_blog,
+                         "course_blog"=>$educourse->course_blog,
                          "course_wiki"=>$course_wiki,
                          "signup_deadline"=>edufeedrDateIntoTimestamp($signup_deadline),
                          "course_starting_date"=>edufeedrDateIntoTimestamp($course_starting_date),
@@ -104,7 +96,6 @@
 	unset($_SESSION['educourse_title']);
 	unset($_SESSION['educourse_description']);
 	unset($_SESSION['educourse_course_tag']);
-	unset($_SESSION['educourse_course_blog']);
 	unset($_SESSION['educourse_course_wiki']);
 	unset($_SESSION['educourse_signup_deadline']);
 	unset($_SESSION['educourse_course_starting_date']);

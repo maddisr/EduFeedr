@@ -145,7 +145,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/forms/edit_educourse.php
-        Lines: 66
+        Lines: 68
         Text: Course blog
         _missing_translation_
         */
@@ -177,7 +177,7 @@
         
         /* 
         File: /edufeedr/actions/edit_educourse.php
-        Lines: 101
+        Lines: 93
         Text: Course modified
         _missing_translation_
         */
@@ -218,7 +218,7 @@
         File: /edufeedr/actions/join_educourse.php
         File: /edufeedr/actions/remove_assignment.php
         File: /edufeedr/actions/remove_participant.php
-        Lines: 251, 52, 80, 98, 55, 97, 79, 81, 24, 26
+        Lines: 251, 52, 80, 98, 55, 89, 79, 81, 24, 26
         Text: Error occured, object could not be sent to EduSuckr.
         _missing_translation_
         */
@@ -226,7 +226,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/forms/edit_educourse.php
-        Lines: 82
+        Lines: 89
         Text: Ending date
         _missing_translation_
         */
@@ -416,7 +416,7 @@
         /* 
         File: /edufeedr/actions/add_educourse.php
         File: /edufeedr/actions/edit_educourse.php
-        Lines: 48, 59
+        Lines: 48, 51
         Text: Error occured, object could not be saved.
         _missing_translation_
         */
@@ -526,10 +526,9 @@
         
         /* 
         File: /edufeedr/actions/add_educourse.php
-        File: /edufeedr/actions/edit_educourse.php
         File: /edufeedr/actions/edit_participant.php
         File: /edufeedr/actions/join_educourse.php
-        Lines: 36, 44, 39, 46
+        Lines: 36, 39, 46
         Text: Provided url was not a blog or your blog engine is not supported.
         _missing_translation_
         */
@@ -554,7 +553,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/forms/edit_educourse.php
-        Lines: 70
+        Lines: 77
         Text: Course website or wiki
         _missing_translation_
         */
@@ -619,7 +618,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/forms/edit_educourse.php
-        Lines: 78
+        Lines: 85
         Text: Starting date
         _missing_translation_
         */
@@ -726,7 +725,7 @@
         
         /* 
         File: /edufeedr/actions/edit_educourse.php
-        Lines: 50
+        Lines: 42
         Text: Please check aggregation start and end dates. Aggregation can not start after the course starts and it can not end before the course ends.
         _missing_translation_
         */
@@ -830,7 +829,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/forms/edit_educourse.php
-        Lines: 74
+        Lines: 81
         Text: Enrollment deadline
         _missing_translation_
         */
@@ -879,7 +878,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/forms/edit_educourse.php
-        Lines: 87
+        Lines: 94
         Text: Start aggregating blog posts and comments from
         _missing_translation_
         */
@@ -912,7 +911,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/forms/edit_educourse.php
-        Lines: 62
+        Lines: 64
         Text: Course tag
         _missing_translation_
         */
@@ -952,7 +951,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/forms/edit_educourse.php
-        Lines: 91
+        Lines: 98
         Text: End aggeregating blog posts and comments on
         _missing_translation_
         */
@@ -1021,7 +1020,7 @@
         File: /edufeedr/actions/edit_educourse.php
         File: /edufeedr/actions/edit_participant.php
         File: /edufeedr/actions/join_educourse.php
-        Lines: 24, 30, 28, 38, 33, 39
+        Lines: 24, 30, 28, 36, 33, 39
         Text: Please fill all required fields.
         _missing_translation_
         */
