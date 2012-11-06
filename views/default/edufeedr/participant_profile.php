@@ -42,8 +42,10 @@
 		if (is_array($posts) && sizeof($posts)>0) {
 			$body .= '<table id="profile_posts"><tbody>';
 			foreach ($posts as $post) {
+                $body .= "<tr>";
 				$body .= '<td>'.date('d.m.Y', $post['date']).'</td>';
 				$body .= '<td>'.elgg_view('output/url', array('value' => $vars['url'].'pg/edufeedr/view_post/'.$vars['entity']->getGUID().'/'.$post['id'], 'text' => $post['title'])).'</td>';
+                $body .= "</tr>";
 			}
 			$body .= '</tbody></table>';
 		}
