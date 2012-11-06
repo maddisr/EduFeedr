@@ -1,8 +1,5 @@
 <?php
 
-    // Load engine
-    require_once(dirname(dirname(dirname(__FILE__))) . '/engine/start.php');
-    
     $guid = (int) get_input('educourse');
     $entity = get_entity($guid);
 	if ($entity->getSubtype() == 'educourse')

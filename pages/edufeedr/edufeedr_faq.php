@@ -1,8 +1,5 @@
 <?php
 
-    // Load engine
-    require_once(dirname(dirname(dirname(__FILE__))) . '/engine/start.php');
-
     $body .= '';
     /*translation:EduFeedr FAQ*/
 	$body .= elgg_view_title(elgg_echo('edufeedr:title:faq'));

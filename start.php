@@ -73,76 +73,77 @@
     // Page handler
     function edufeedr_page_handler($page) {
         global $CONFIG;
+        $base_dir = $CONFIG->pluginspath . 'edufeedr/pages/edufeedr';
 
-	if($page[0]) {
-	    switch ($page[0]) {
-		case "index":
-			include($CONFIG->pluginspath . 'edufeedr/index.php');
-			break;
-		case "open":
-			include($CONFIG->pluginspath . 'edufeedr/open_courses.php');
-			break;
-		case "ongoing":
-			include($CONFIG->pluginspath . 'edufeedr/ongoing_courses.php');
-			break;
-		case "ended":
-			include($CONFIG->pluginspath . 'edufeedr/ended_courses.php');
-			break;
-		case "add_educourse":
-			include($CONFIG->pluginspath . 'edufeedr/add_educourse.php');
-			break;
-		case "edit_educourse":
-			set_input('educourse', $page[1]);
-			include($CONFIG->pluginspath . 'edufeedr/edit_educourse.php');
-			break;
-		case "view_educourse":
-			set_input('educourse', $page[1]);
-			include($CONFIG->pluginspath . 'edufeedr/view_educourse.php');
-			break;
-		case "view_post":
-			set_input('educourse', $page[1]);
-			set_input('post_id', $page[2]);
-			include($CONFIG->pluginspath . 'edufeedr/view_post.php');
-			break;
-		case"view_hidden":
-			set_input('educourse', $page[1]);
-			set_input('hidden_type', $page[2]);
-			include($CONFIG->pluginspath . 'edufeedr/view_hidden.php');
-			break;
-		case "join":
-			set_input('educourse', $page[1]);
-			include($CONFIG->pluginspath . 'edufeedr/join_educourse.php');
-			break;
-		case "edit_participant":
-			set_input('educourse', $page[1]);
-			set_input('participant_id', $page[2]);
-			include($CONFIG->pluginspath . 'edufeedr/edit_participant.php');
-			break;
-		case "add_assignment":
-			set_input('educourse', $page[1]);
-			include($CONFIG->pluginspath . 'edufeedr/add_assignment.php');
-			break;
-		case "edit_assignment":
-			set_input('educourse', $page[1]);
-			set_input('assignment_id', $page[2]);
-			include($CONFIG->pluginspath . 'edufeedr/edit_assignment.php');
-			break;
-		case "faq":
-			include($CONFIG->pluginspath . 'edufeedr/edufeedr_faq.php');
-			break;
-        case "view_profile":
-			set_input('educourse', $page[1]);
-			set_input('participant_id', $page[2]);
-			include($CONFIG->pluginspath . 'edufeedr/view_profile.php');
-			break;
-		default:
-			include($CONFIG->pluginspath . 'edufeedr/index.php');
-			break;
-		}
-	} else {
-		include($CONFIG->pluginspath . 'edufeedr/index.php');
-	}
-	}
+        if($page[0]) {
+            switch ($page[0]) {
+            case "index":
+                include("$base_dir/index.php");
+                break;
+            case "open":
+                include("$base_dir/open_courses.php");
+                break;
+            case "ongoing":
+                include("$base_dir/ongoing_courses.php");
+                break;
+            case "ended":
+                include("$base_dir/ended_courses.php");
+                break;
+            case "add_educourse":
+                include("$base_dir/add_educourse.php");
+                break;
+            case "edit_educourse":
+                set_input('educourse', $page[1]);
+                include("$base_dir/edit_educourse.php");
+                break;
+            case "view_educourse":
+                set_input('educourse', $page[1]);
+                include("$base_dir/view_educourse.php");
+                break;
+            case "view_post":
+                set_input('educourse', $page[1]);
+                set_input('post_id', $page[2]);
+                include("$base_dir/view_post.php");
+                break;
+            case"view_hidden":
+                set_input('educourse', $page[1]);
+                set_input('hidden_type', $page[2]);
+                include("$base_dir/view_hidden.php");
+                break;
+            case "join":
+                set_input('educourse', $page[1]);
+                include("$base_dir/join_educourse.php");
+                break;
+            case "edit_participant":
+                set_input('educourse', $page[1]);
+                set_input('participant_id', $page[2]);
+                include("$base_dir/edit_participant.php");
+                break;
+            case "add_assignment":
+                set_input('educourse', $page[1]);
+                include("$base_dir/add_assignment.php");
+                break;
+            case "edit_assignment":
+                set_input('educourse', $page[1]);
+                set_input('assignment_id', $page[2]);
+                include("$base_dir/edit_assignment.php");
+                break;
+            case "faq":
+                include("$base_dir/edufeedr_faq.php");
+                break;
+            case "view_profile":
+                set_input('educourse', $page[1]);
+                set_input('participant_id', $page[2]);
+                include("$base_dir/view_profile.php");
+                break;
+            default:
+                include("$base_dir/index.php");
+                break;
+            }
+        } else {
+            include("$base_dir/index.php");
+        }
+    }
 
 	// Permission override for course sign-up by anonymous
 	function educourse_permission_hook($hook_name, $entity_type, $return_value, $parameters) {
@@ -159,7 +160,7 @@
 	}
 
 	function edufeedr_custom_index() {
-		if (!include_once(dirname(__FILE__) . '/edufeedr_custom_index.php')) return false;
+		if (!include_once(dirname(__FILE__) . '/pages/edufeedr/edufeedr_custom_index.php')) return false;
 		return true;
 	}
 

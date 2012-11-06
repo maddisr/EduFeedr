@@ -3,7 +3,6 @@
  * Start the Elgg engine
  */
 define('externalpage',true);
-require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 
     $login_box = "";
     if (!isloggedin()) {

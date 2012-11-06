@@ -1,8 +1,5 @@
 <?php
 
-    // Load engine
-    require_once(dirname(dirname(dirname(__FILE__))) . '/engine/start.php');
-
     $educourse_guid = (int) get_input('educourse');
     $post_id = (int) get_input('post_id');
     $menu = "";

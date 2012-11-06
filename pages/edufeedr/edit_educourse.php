@@ -1,8 +1,5 @@
 <?php
 
-    // Load engine
-    require_once(dirname(dirname(dirname(__FILE__))) . '/engine/start.php');
-
     // Gatekeeper
     gatekeeper();
 
