@@ -370,3 +370,7 @@ div.profile img.profile_avatar {
     width: 128px;
     height: 128px;
 }
+
+.post_hidden_text {
+    font-weight: bold;
+}

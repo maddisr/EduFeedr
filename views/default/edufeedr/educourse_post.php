@@ -11,7 +11,21 @@
         // getting from EduSuckr
 		$es = new EduSuckr;
         $data = $es->getCoursePostById(array($vars['post_id'], $vars['entity']->guid));
-		if ($data) {
+        $is_post_hidden = false;
+        if ($data && isset($data['post']['hidden']) && $data['post']['hidden']) {
+            $is_post_hidden = true;
+        }
+        $can_edit_educourse = false;
+        if ($vars['entity']->canEdit() && edufeedrCanEditEducourse($vars['entity'])) {
+            $can_edit_educourse = true;
+        }
+        $post_shown = true;
+        if (!$can_edit_educourse) {
+            if ($is_post_hidden) {
+                $post_shown = false;
+            }
+        }
+		if ($data && $post_shown) {
 			$body .= '<h4 style="padding-top: 15px;font-weight:bold;"><a href="' . $data['post']['link'] . '" target="_blank">' . $data['post']['title'] . '</a></h4>';
 
 			/*translation:%s by %s*/
@@ -19,9 +33,18 @@
 			$body .= '<div id="educourse_post_content">' . nl2br($data['post']['content']) . '</div>';
 			
 			// Hide post	
-			if ($vars['entity']->canEdit() && edufeedrCanEditEducourse($vars['entity'])) {
-				/*translation:hide*/
-				$body .= '<a href="'.$vars['url'].'action/edufeedr/hide_post?post_id='.$data['post']['id'].'&educourse='.$vars['entity']->getGUID().'&__elgg_ts='.$ts.'&__elgg_token='.$token.'">' . elgg_echo('edufeedr:action:hide') . '</a>';
+			if ($can_edit_educourse) {
+                if ($is_post_hidden) {
+                    /*translation:This post has been hidden from the course.*/
+                    $body .= '<span class="post_hidden_text">' . elgg_echo('edufeedr:text:post_has_been_hidden') . '</span>';
+                    $restore_url = $vars['url'].'action/edufeedr/unhide_post?post_id='.$data['post']['id'].'&educourse='.$vars['entity']->getGUID();
+                    $restore_url = elgg_add_action_tokens_to_url($restore_url);
+                    /*translation:restore*/
+                    $body .= " <a href=\"{$restore_url}\">".ucfirst( elgg_echo('edufeedr:action:unhide') )."</a>";
+                } else {
+				    /*translation:hide*/
+				    $body .= '<a href="'.$vars['url'].'action/edufeedr/hide_post?post_id='.$data['post']['id'].'&educourse='.$vars['entity']->getGUID().'&__elgg_ts='.$ts.'&__elgg_token='.$token.'">' . elgg_echo('edufeedr:action:hide') . '</a>';
+                }
 			}
 			
 			$body .= '<div id="educourse_post_link"><a href="' . $data['post']['link'] . '" target="_blank">' . $data['post']['link'] . '</a></a>';

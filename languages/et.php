@@ -14,7 +14,8 @@
         /* 
         File: /edufeedr/views/default/edufeedr/educourse_hidden.php
         File: /edufeedr/views/default/edufeedr/educourse_hidden.php
-        Lines: 23, 35
+        File: /edufeedr/views/default/edufeedr/educourse_post.php
+        Lines: 23, 35, 43
         Text: restore
         _missing_translation_
         */
@@ -29,17 +30,17 @@
         "edufeedr:submenu:add:educourse" => "Add course",
         
         /* 
-        File: /edufeedr/view_hidden.php
+        File: /edufeedr/pages/edufeedr/view_hidden.php
         File: /edufeedr/views/default/helpers/educourse_tabs.php
-        Lines: 36, 16
+        Lines: 33, 16
         Text: Course feed
         _missing_translation_
         */
         "edufeedr:tab:course:feed" => "Course feed",
         
         /* 
-        File: /edufeedr/edufeedr_custom_index.php
-        Lines: 15
+        File: /edufeedr/pages/edufeedr/edufeedr_custom_index.php
+        Lines: 14
         Text: Courses
         _missing_translation_
         */
@@ -54,12 +55,12 @@
         "edufeedr:action:delete_course" => "Delete course",
         
         /* 
-        File: /edufeedr/actions/add_assignment.php
-        Lines: 58
-        Text: Assignment could not be added to course %s
+        File: /edufeedr/actions/edit_assignment.php
+        Lines: 61
+        Text: Assignment could nto be changed.
         _missing_translation_
         */
-        "edufeedr:error:assignment:could:not:be:added" => "Assignment could not be added to course %s",
+        "edufeedr:error:assignment:could:not:be:changed" => "Assignment could nto be changed.",
         
         /* 
         File: /edufeedr/actions/unhide_comment.php
@@ -102,13 +103,12 @@
         "edufeedr:submenu:faq" => "EduFeedr FAQ",
         
         /* 
-        File: /edufeedr/views/default/edufeedr/educourse_blog.php
-        File: /edufeedr/views/default/edufeedr/singles/educourse_comment.php
-        Lines: 51, 52
-        Text: read more
+        File: /edufeedr/pages/edufeedr/index.php
+        Lines: 8
+        Text: All courses
         _missing_translation_
         */
-        "edufeedr:read:more" => "read more",
+        "edufeedr:title:all:courses" => "All courses",
         
         /* 
         File: /edufeedr/actions/edit_participant.php
@@ -127,8 +127,8 @@
         "edufeedr:submenu:all:courses" => "All courses",
         
         /* 
-        File: /edufeedr/edit_participant.php
-        Lines: 24
+        File: /edufeedr/pages/edufeedr/edit_participant.php
+        Lines: 21
         Text: Edit participant
         _missing_translation_
         */
@@ -137,7 +137,7 @@
         /* 
         File: /edufeedr/views/default/edufeedr/educourse_blog.php
         File: /edufeedr/views/default/edufeedr/participant_profile.php
-        Lines: 17, 53
+        Lines: 17, 55
         Text: Comments
         _missing_translation_
         */
@@ -152,8 +152,8 @@
         "edufeedr:label:course:blog_url" => "Course blog",
         
         /* 
-        File: /edufeedr/join_educourse.php
-        Lines: 20
+        File: /edufeedr/pages/edufeedr/join_educourse.php
+        Lines: 17
         Text: Enroll to the course
         _missing_translation_
         */
@@ -168,8 +168,8 @@
         "edufeedr:error:link:has:no:feed" => "Entered URL has no feed.",
         
         /* 
-        File: /edufeedr/add_educourse.php
-        Lines: 23
+        File: /edufeedr/pages/edufeedr/add_educourse.php
+        Lines: 20
         Text: Add course
         _missing_translation_
         */
@@ -234,16 +234,16 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/educourse_post.php
-        Lines: 31
+        Lines: 54
         Text: %s comments
         _missing_translation_
         */
         "edufeedr:blog:comments" => "%s comments",
         
         /* 
-        File: /edufeedr/view_hidden.php
+        File: /edufeedr/pages/edufeedr/view_hidden.php
         File: /edufeedr/views/default/helpers/educourse_tabs.php
-        Lines: 52, 32
+        Lines: 49, 32
         Text: Social network
         _missing_translation_
         */
@@ -266,17 +266,17 @@
         "edufeedr:educourse:enrollment:deadline" => "Enrollment deadline",
         
         /* 
-        File: /edufeedr/actions/add_assignment.php
-        Lines: 55
-        Text: Assignment added to course %s
+        File: /edufeedr/actions/join_educourse.php
+        Lines: 60
+        Text: You can not register to the course with the same blog twice.
         _missing_translation_
         */
-        "edufeedr:message:assignment:added" => "Assignment added to course %s",
+        "edufeedr:error:blog_added_second_time" => "You can not register to the course with the same blog twice.",
         
         /* 
-        File: /edufeedr/view_hidden.php
+        File: /edufeedr/pages/edufeedr/view_hidden.php
         File: /edufeedr/views/default/helpers/educourse_tabs.php
-        Lines: 39, 19
+        Lines: 36, 19
         Text: Course info
         _missing_translation_
         */
@@ -291,12 +291,12 @@
         "edufeedr:educourse:starting:date" => "Starting date",
         
         /* 
-        File: /edufeedr/actions/edit_assignment.php
-        Lines: 61
-        Text: Assignment could nto be changed.
+        File: /edufeedr/actions/add_assignment.php
+        Lines: 58
+        Text: Assignment could not be added to course %s
         _missing_translation_
         */
-        "edufeedr:error:assignment:could:not:be:changed" => "Assignment could nto be changed.",
+        "edufeedr:error:assignment:could:not:be:added" => "Assignment could not be added to course %s",
         
         /* 
         File: /edufeedr/views/default/settings/edufeedr/edit.php
@@ -307,8 +307,8 @@
         "edufeedr:setting:wsdl:url:edusuckr" => "Write WSDL URL for EduSuckr",
         
         /* 
-        File: /edufeedr/add_assignment.php
-        Lines: 20
+        File: /edufeedr/pages/edufeedr/add_assignment.php
+        Lines: 17
         Text: Add assignment
         _missing_translation_
         */
@@ -334,7 +334,7 @@
         File: /edufeedr/views/default/edufeedr/educourse_blog.php
         File: /edufeedr/views/default/edufeedr/educourse_post.php
         File: /edufeedr/views/default/edufeedr/singles/educourse_comment.php
-        Lines: 55, 24, 61
+        Lines: 55, 46, 61
         Text: hide
         _missing_translation_
         */
@@ -365,8 +365,8 @@
         "edufeedr:label:blogger" => "Blogger (if any)",
         
         /* 
-        File: /edufeedr/edufeedr_faq.php
-        Lines: 8
+        File: /edufeedr/pages/edufeedr/edufeedr_faq.php
+        Lines: 5
         Text: EduFeedr FAQ
         _missing_translation_
         */
@@ -406,14 +406,6 @@
         "edufeedr:error:participant:not:found" => "Participant not found.",
         
         /* 
-        File: /edufeedr/actions/join_educourse.php
-        Lines: 60
-        Text: You can not register to the course with the same blog twice.
-        _missing_translation_
-        */
-        "edufeedr:error:blog_added_second_time" => "You can not register to the course with the same blog twice.",
-        
-        /* 
         File: /edufeedr/actions/add_educourse.php
         File: /edufeedr/actions/edit_educourse.php
         Lines: 48, 51
@@ -434,7 +426,7 @@
         File: /edufeedr/views/default/edufeedr/educourse_blog.php
         File: /edufeedr/views/default/edufeedr/educourse_hidden.php
         File: /edufeedr/views/default/edufeedr/educourse_post.php
-        Lines: 36, 21, 18
+        Lines: 36, 21, 32
         Text: %s by %s
         _missing_translation_
         */
@@ -476,7 +468,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/singles/educourse_participant.php
-        Lines: 13
+        Lines: 15
         Text: Edit
         _missing_translation_
         */
@@ -499,11 +491,11 @@
         "edufeedr:action:control:remove:assignment" => "Remove",
         
         /* 
-        File: /edufeedr/view_educourse.php
-        File: /edufeedr/view_hidden.php
-        File: /edufeedr/view_post.php
-        File: /edufeedr/view_profile.php
-        Lines: 66, 67, 37, 32
+        File: /edufeedr/pages/edufeedr/view_educourse.php
+        File: /edufeedr/pages/edufeedr/view_hidden.php
+        File: /edufeedr/pages/edufeedr/view_post.php
+        File: /edufeedr/pages/edufeedr/view_profile.php
+        Lines: 63, 64, 34, 29
         Text: Course not found
         _missing_translation_
         */
@@ -511,7 +503,7 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/singles/educourse_participant.php
-        Lines: 18
+        Lines: 20
         Text: Remove
         _missing_translation_
         */
@@ -545,16 +537,16 @@
         
         /* 
         File: /edufeedr/views/default/edufeedr/educourse_post.php
-        Lines: 40
+        Lines: 63
         Text: Post a comment
         _missing_translation_
         */
         "edufeedr:post:write:a:comment" => "Post a comment",
         
         /* 
-        File: /edufeedr/view_hidden.php
+        File: /edufeedr/pages/edufeedr/view_hidden.php
         File: /edufeedr/views/default/helpers/educourse_tabs.php
-        Lines: 46, 26
+        Lines: 43, 26
         Text: Assignments
         _missing_translation_
         */
@@ -569,29 +561,38 @@
         "edufeedr:label:course:wiki_url" => "Course website or wiki",
         
         /* 
-        File: /edufeedr/edit_assignment.php
-        Lines: 24
+        File: /edufeedr/pages/edufeedr/edit_assignment.php
+        Lines: 21
         Text: Edit assignment
         _missing_translation_
         */
         "edufeedr:title:edit_assignment" => "Edit assignment",
         
         /* 
-        File: /edufeedr/view_hidden.php
+        File: /edufeedr/pages/edufeedr/view_hidden.php
         File: /edufeedr/views/default/helpers/educourse_tabs.php
-        Lines: 49, 29
+        Lines: 46, 29
         Text: Progress
         _missing_translation_
         */
         "edufeedr:tab:progress" => "Progress",
         
         /* 
-        File: /edufeedr/index.php
-        Lines: 9
-        Text: All courses
+        File: /edufeedr/views/default/edufeedr/educourse_post.php
+        Lines: 39
+        Text: This post has been hidden from the course.
         _missing_translation_
         */
-        "edufeedr:title:all:courses" => "All courses",
+        "edufeedr:text:post_has_been_hidden" => "This post has been hidden from the course.",
+        
+        /* 
+        File: /edufeedr/views/default/edufeedr/educourse_blog.php
+        File: /edufeedr/views/default/edufeedr/singles/educourse_comment.php
+        Lines: 51, 52
+        Text: read more
+        _missing_translation_
+        */
+        "edufeedr:read:more" => "read more",
         
         /* 
         File: /edufeedr/views/default/edufeedr/forms/join_educourse.php
@@ -602,16 +603,24 @@
         "edufeedr:submit:signup" => "Sign up",
         
         /* 
-        File: /edufeedr/edit_educourse.php
-        Lines: 24
+        File: /edufeedr/pages/edufeedr/edit_educourse.php
+        Lines: 21
         Text: Edit course info
         _missing_translation_
         */
         "edufeedr:title:edit_educourse" => "Edit course info",
         
         /* 
+        File: /edufeedr/views/default/edufeedr/forms/edit_educourse.php
+        Lines: 94
+        Text: Start aggregating blog posts and comments from
+        _missing_translation_
+        */
+        "edufeedr:label:educourse_start_aggregate" => "Start aggregating blog posts and comments from",
+        
+        /* 
         File: /edufeedr/views/default/edufeedr/singles/educourse_participant.php
-        Lines: 20
+        Lines: 22
         Text: Are you sure you want to remove participant %s?
         _missing_translation_
         */
@@ -757,8 +766,8 @@
         "edufeedr:label:firstname" => "First name",
         
         /* 
-        File: /edufeedr/ongoing_courses.php
-        Lines: 9
+        File: /edufeedr/pages/edufeedr/ongoing_courses.php
+        Lines: 8
         Text: Ongoing courses
         _missing_translation_
         */
@@ -870,8 +879,7 @@
         
         /* 
         File: /edufeedr/actions/edit_participant.php
-        File: /edufeedr/actions/edit_participant.php
-        Lines: 69, 94
+        Lines: 69
         Text: Participant information changed.
         _missing_translation_
         */
@@ -886,12 +894,12 @@
         "edufeedr:message:assignment:removed" => "Assignment removed.",
         
         /* 
-        File: /edufeedr/views/default/edufeedr/forms/edit_educourse.php
-        Lines: 94
-        Text: Start aggregating blog posts and comments from
+        File: /edufeedr/actions/add_assignment.php
+        Lines: 55
+        Text: Assignment added to course %s
         _missing_translation_
         */
-        "edufeedr:label:educourse_start_aggregate" => "Start aggregating blog posts and comments from",
+        "edufeedr:message:assignment:added" => "Assignment added to course %s",
         
         /* 
         File: /edufeedr/views/default/settings/edufeedr/edit.php
@@ -910,9 +918,9 @@
         "edufeedr:label:deadline" => "Deadline",
         
         /* 
-        File: /edufeedr/view_hidden.php
+        File: /edufeedr/pages/edufeedr/view_hidden.php
         File: /edufeedr/views/default/helpers/educourse_tabs.php
-        Lines: 43, 23
+        Lines: 40, 23
         Text: Participants
         _missing_translation_
         */
@@ -967,8 +975,8 @@
         "edufeedr:label:educourse_stop_aggregate" => "End aggeregating blog posts and comments on",
         
         /* 
-        File: /edufeedr/open_courses.php
-        Lines: 9
+        File: /edufeedr/pages/edufeedr/open_courses.php
+        Lines: 8
         Text: Open courses
         _missing_translation_
         */
@@ -1068,8 +1076,8 @@
         "edufeedr:educourse:course:tag" => "Course tag",
         
         /* 
-        File: /edufeedr/ended_courses.php
-        Lines: 9
+        File: /edufeedr/pages/edufeedr/ended_courses.php
+        Lines: 8
         Text: Ended courses
         _missing_translation_
         */
