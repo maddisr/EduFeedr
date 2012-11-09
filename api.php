@@ -156,7 +156,7 @@
                 $returned['blog_base'] = edufeedrFixEndSlashOnURL($split_arr[0]);
                 // Using data on generator feed locations
                 $returned['posts_feed_url'] = sprintf("%s%s/-/%s", $returned['blog_base'], $generators_data['blogger']['posts'], trim($split_arr[1], " /"));
-                $reurned['comments_feed_url'] = sprintf("%s%s", $returned['blog_base'], $generators_data['blogger']['comments']);
+                $returned['comments_feed_url'] = sprintf("%s%s", $returned['blog_base'], $generators_data['blogger']['comments']);
                 return $returned;
             }
         } elseif (substr_count($generator, 'wordpress')) {
@@ -179,7 +179,7 @@
                     $returned['blog_base'] = edufeedrFixEndSlashOnURL($split_arr[0]);
                     // Does not use generator data, using hard-coded feed location logic (the non-permalink case)
                     $returned['posts_feed_url'] = sprintf("%s?cat=%d&feed=atom", $returned['blog_base'], $query_arr['cat']);
-                    $retruned['comments_feed_url'] = sprintf("%s?feed=comments-rss2", $retruned['blog_base']);
+                    $returned['comments_feed_url'] = sprintf("%s?feed=comments-rss2", $returned['blog_base']);
                     return $returned;
                 }
             }
