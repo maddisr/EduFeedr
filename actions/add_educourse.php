@@ -80,7 +80,7 @@
         register_error(elgg_echo('edufeedr:error:not:sent:edusuckr'));
     }
     $teacher = $educourse->getOwnerEntity();
-    $participant_id = insert_data("INSERT INTO {$CONFIG->dbprefix}edufeedr_course_participants (course_guid, firstname, lastname, email, blog, posts, comments, status) VALUES (".$educourse->getGUID().", 'Course', 'Blog', '".$teacher->email."', '$course_blog', '".$pc['posts']."', '".$pc['comments']."', 'teacher')");
+    $participant_id = insert_data("INSERT INTO {$CONFIG->dbprefix}edufeedr_course_participants (course_guid, firstname, lastname, email, blog, blog_base, posts, comments, status) VALUES (".$educourse->getGUID().", 'Course', 'Blog', '".$teacher->email."', '$course_blog', '$course_blog', '".$pc['posts']."', '".$pc['comments']."', 'teacher')");
     $teacher_data = array(
 	        'participant_guid' => $participant_id,
 	        'course_guid' => $educourse->getGUID(),
@@ -88,6 +88,7 @@
 	        'lastname' => "Blog",
 	        'email' => $teacher->email,
 	        'blog' => $course_blog,
+            'blog_base' => $course_blog,
 	        'posts' => $pc['posts'],
 	        'comments' => $pc['comments'],
 	        'status' => 'teacher'

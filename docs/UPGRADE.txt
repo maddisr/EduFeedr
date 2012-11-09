@@ -1,3 +1,9 @@
 ***** This file contains upgrate instructions in case of major changes *****
 
 All custom tables can be found from edufeedr_tables.sql situated in plugin directory root.
+
+== 08.11.2012 Added blog_base for participants; 0.5.1 to 0.5.2 ==
+Add blog_base column to participants table:
+  ALTER TABLE prefix_edufeedr_course_participants ADD COLUMN blog_base varchar(255) NOT NULL;
+Populate blog_base column with data from blog column:
+  UPDATE prefix_edufeedr_course_participants SET blog_base = blog;

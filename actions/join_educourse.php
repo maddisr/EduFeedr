@@ -54,7 +54,7 @@
 				forward('pg/edufeedr/join/' . $guid);
 			}
 			// Same blog can not be used twice
-			$blog_allowed = edufeedrCanRegisterWithBlog($guid, $blog);
+			$blog_allowed = edufeedrCanRegisterWithBlogBase($guid, $feeds['blog_base']);
 			if (!$blog_allowed) {
 				/*translation:You can not register to the course with the same blog twice.*/
 				register_error(elgg_echo('edufeedr:error:blog_added_second_time'));
@@ -64,7 +64,8 @@
 			// Add participant into table
 			$posts = $feeds['posts'];
 			$comments = $feeds['comments'];
-			$participant_id = insert_data("INSERT INTO {$CONFIG->dbprefix}edufeedr_course_participants (course_guid, firstname, lastname, email, blog, posts, comments) VALUES ($guid, '$firstname', '$lastname', '$email', '$blog', '$posts', '$comments')");
+            $blog_base = $feeds['blog_base'];
+			$participant_id = insert_data("INSERT INTO {$CONFIG->dbprefix}edufeedr_course_participants (course_guid, firstname, lastname, email, blog, blog_base, posts, comments) VALUES ($guid, '$firstname', '$lastname', '$email', '$blog', '$blog_base', '$posts', '$comments')");
 
 			if ($participant_id) {
 				/*translation:You have joined the course %s*/
@@ -77,7 +78,8 @@
 		            'firstname' => $firstname,
 		            'lastname' => $lastname,
 		            'email' => $email,
-		 	        'blog' => $blog,
+                    'blog' => $blog,
+                    'blog_base' => $blog_base,
 		 	        'posts' => $posts,
 		 	        'comments' => $comments,
 		 	        'status' => 'active'

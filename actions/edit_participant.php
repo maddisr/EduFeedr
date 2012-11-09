@@ -62,7 +62,8 @@
 			// Update participant
 			$posts = $feeds['posts'];
 			$comments = $feeds['comments'];
-			$participant_update = update_data("UPDATE {$CONFIG->dbprefix}edufeedr_course_participants SET firstname = '$firstname', lastname = '$lastname', email = '$email', blog = '$blog', posts = '$posts', comments = '$comments', blogger = '$blogger', modified = NOW() WHERE course_guid = $guid and id = $participant_id");
+            $blog_base = $feeds['blog_base'];
+			$participant_update = update_data("UPDATE {$CONFIG->dbprefix}edufeedr_course_participants SET firstname = '$firstname', lastname = '$lastname', email = '$email', blog = '$blog', blog_base = '$blog_base', posts = '$posts', comments = '$comments', blogger = '$blogger', modified = NOW() WHERE course_guid = $guid and id = $participant_id");
 
 			if ($participant_update) {
 				/*translation:Participant information changed.*/
@@ -75,6 +76,7 @@
 		            'lastname' => $lastname,
 		            'email' => $email,
 		 	        'blog' => $blog,
+                    'blog_base' => $blog_base,
 		 	        'posts' => $posts,
 		 	        'comments' => $comments,
 		 	        'blogger_id' => $blogger_id,

@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS prefix_edufeedr_course_participants (
 	lastname varchar(255) NOT NULL,
 	email varchar(255) NOT NULL,
 	blog varchar(255) NOT NULL,
+	blog_base varchar(255) NOT NULL,
 	posts varchar(255) NOT NULL,
 	comments varchar(255) NOT NULL,
 	blogger varchar(255) DEFAULT '',

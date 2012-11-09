@@ -33,7 +33,7 @@
         // getting from EduSuckr
 		$es = new EduSuckr;
 
-		$posts = $es->getParticipantPosts(array($vars['entity']->guid, $vars['participant']->blog));
+		$posts = $es->getParticipantPosts(array($vars['entity']->guid, $vars['participant']->blog_base));
 		if (!($posts && is_array($posts))) {
 			$posts = array();
 		}

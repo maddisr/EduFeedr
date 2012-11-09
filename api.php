@@ -91,12 +91,24 @@
 		return $opml;
 	}
 
-	// XXX THIS SHOULD BE CHANGED TO USE link:rel:alternate
+    /**
+     * Returns array with feed location data for base blog case.
+     * Using atom feeds for blogger.
+     * Using non-permalink feeds for wordpress (work all the time).
+     *
+     * @return array
+     */
 	function edufeedrGetSuitableGenerators() {
 		return array(
-			'blogger' => array('posts' => 'feeds/posts/default', 'comments' => 'feeds/comments/default'),
-			'wordpress' => array('posts' => 'wp-atom.php', 'comments' => 'wp-commentsrss2.php') // Using ugly defaults to be on the safe side
-			);
+            'blogger' => array(
+                'posts' => 'feeds/posts/default',
+                'comments' => 'feeds/comments/default'
+            ),
+            'wordpress' => array(
+                'posts' => '?feed=atom',
+                'comments' => '?feed=comments-rss2'
+            )
+		);
 	}
 
     /**
@@ -128,29 +140,87 @@
     }
 
     /**
+     * Checks for category or label case and returns the URLs for feeds and blog_base.
+     *
+     * @param string $blog_url  URL provided (might be base or category/label)
+     * @param string $generator The generator of the blog
+     *
+     * @return mixed Array with feed locations and blog base or false
+     */
+    function edufeedrGetCategoryOrLabelInformation($blog_url, $generator) {
+        $generators_data = edufeedrGetSuitableGenerators();
+        if (substr_count($generator, 'blogger')) {
+            if (strpos($blog_url, '/search/label/') !== false) {
+                $returned = array();
+                $split_arr = preg_split('@/search/label/@', $blog_url, 2);
+                $returned['blog_base'] = edufeedrFixEndSlashOnURL($split_arr[0]);
+                // Using data on generator feed locations
+                $returned['posts_feed_url'] = sprintf("%s%s/-/%s", $returned['blog_base'], $generators_data['blogger']['posts'], trim($split_arr[1], " /"));
+                $reurned['comments_feed_url'] = sprintf("%s%s", $returned['blog_base'], $generators_data['blogger']['comments']);
+                return $returned;
+            }
+        } elseif (substr_count($generator, 'wordpress')) {
+            if (strpos($blog_url, '/category/') !== false) {
+                $returned = array();
+                $split_arr = preg_split('@/category/@', $blog_url, 2);
+                $returned['blog_base'] = edufeedrFixEndSlashOnURL($split_arr[0]);
+                // Can not use generator data, using hard-coded feed location logic (the permalink case)
+                $returned['posts_feed_url'] = sprintf("%scategory/%s/feed/atom/", $returned['blog_base'], trim($split_arr[1], " /"));
+                $returned['comments_feed_url'] = sprintf("%scomments/feed/", $returned['blog_base']);
+                return $returned;
+            }
+            $parts = parse_url($blog_url);
+            if ($parts && isset($parts['query'])) {
+                $query_arr = array();
+                parse_str($parts['query'], $query_arr);
+                if (isset($query_arr['cat'])) {
+                    $returned = array();
+                    $split_arr = preg_split('@\?@', $blog_url, 2);
+                    $returned['blog_base'] = edufeedrFixEndSlashOnURL($split_arr[0]);
+                    // Does not use generator data, using hard-coded feed location logic (the non-permalink case)
+                    $returned['posts_feed_url'] = sprintf("%s?cat=%d&feed=atom", $returned['blog_base'], $query_arr['cat']);
+                    $retruned['comments_feed_url'] = sprintf("%s?feed=comments-rss2", $retruned['blog_base']);
+                    return $returned;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
      * Tries to determine blog posts and comments feeds.
      *
      * @param string $url URL of the blog
      *
-     * @return mixed Array with feed locations or false
+     * @return mixed Array with feed locations and blog base or false
      */
 	function edufeedrGetBlogFeeds($url) {
 
-		$add_url_end = strcmp("/", substr($url, -1));
-		if ($add_url_end) {
-			$url = $url . "/";
-		}
+        $url = edufeedrFixEndSlashOnURL($url);
 
         $generator = edufeedrGetBlogGenerator($url);
         if (!$generator) {
             return false;
+        }
+
+        $col_information = edufeedrGetCategoryOrLabelInformation($url, $generator);
+        if ($col_information) {
+            return array(
+                'posts' => $col_information['posts_feed_url'],
+                'comments' => $col_information['comments_feed_url'],
+                'blog_base' => $col_information['blog_base']
+            ); 
         }
         
         $suitable_generators = edufeedrGetSuitableGenerators();
 
         foreach ($suitable_generators as $key => $sg) {
             if (substr_count($generator, $key) > 0) {
-                return array('posts' => $url . $sg['posts'], 'comments' => $url . $sg['comments']);
+                return array(
+                    'posts' => $url . $sg['posts'],
+                    'comments' => $url . $sg['comments'],
+                    'blog_base' => $url
+                );
             }
         }
 
@@ -204,6 +274,25 @@
         }
 
         return $blog_url;
+    }
+
+    /**
+     * Appends a slash at the end of the URL if needed and returns it.
+     *
+     * @param string $url URL to be checked
+     * 
+     * @return string
+     */
+    function edufeedrFixEndSlashOnURL($url) {
+        $query = parse_url($url, PHP_URL_QUERY);
+        if (!$query) {
+            $add_url_end = strcmp("/", substr($url, -1));
+            if ($add_url_end !== 0) {
+                $url = $url . "/";
+            }
+        }
+
+        return $url;
     }
 
 	// Feed parsing methods and helpers
@@ -354,21 +443,30 @@
 		return get_data_row("SELECT * FROM {$CONFIG->dbprefix}edufeedr_course_participants WHERE course_guid = $course_guid and id = $participant_id");
 	}
 
-	// Checks if participant with certain blog has already bee nregistered to the course
-	function edufeedrCanRegisterWithBlog($course_guid, $blog_url) {
+    /**
+     * Checks if participant with certain blog base has already been
+     * registered to the course. Using blog_base for the check.
+     * This means that only one unique base is allowed per course.
+     *
+     * @param int    $course_guid   Course unique identifier
+     * @param string $blog_base_url Blog base URL
+     *
+     * @return bool
+     */
+	function edufeedrCanRegisterWithBlogBase($course_guid, $blog_base_url) {
 		global $CONFIG;
-		if (!$course_guid || !$blog_url) {
+		if (!$course_guid || !$blog_base_url) {
 			return false;
 		}
-		$blog_url_alternate = $blog_url;
+		$blog_base_url_alternate = $blog_base_url;
 		// Deal with cases of url having a trailing slash or not
-		if (strrpos($blog_url, "/") === strlen($blog_url) - 1) {
-			$blog_url_alternate = substr($blog_url, 0 , -1);
+		if (strrpos($blog_base_url, "/") === strlen($blog_base_url) - 1) {
+			$blog_base_url_alternate = substr($blog_base_url, 0 , -1);
 		} else {
-			$blog_url_alternate = $blog_url_alternate . '/';
+			$blog_base_url_alternate = $blog_base_url_alternate . '/';
 		}
 
-		if (!get_data_row("SELECT id FROM {$CONFIG->dbprefix}edufeedr_course_participants WHERE course_guid = $course_guid AND (blog = '$blog_url' OR blog = '$blog_url_alternate')")) {
+		if (!get_data_row("SELECT id FROM {$CONFIG->dbprefix}edufeedr_course_participants WHERE course_guid = $course_guid AND (blog_base = '$blog_base_url' OR blog_base = '$blog_base_url_alternate')")) {
 			return true;
 		}
 		return false;
