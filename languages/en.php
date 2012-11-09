@@ -72,7 +72,7 @@
         
         /* 
         File: /edufeedr/actions/join_educourse.php
-        Lines: 71
+        Lines: 72
         Text: You have joined the course %s
         _missing_translation_
         */
@@ -112,7 +112,7 @@
         
         /* 
         File: /edufeedr/actions/edit_participant.php
-        Lines: 90
+        Lines: 92
         Text: Participant information could not be changed.
         _missing_translation_
         */
@@ -161,7 +161,7 @@
         
         /* 
         File: /edufeedr/api.php
-        Lines: 269
+        Lines: 358
         Text: Entered URL has no feed.
         _missing_translation_
         */
@@ -218,7 +218,7 @@
         File: /edufeedr/actions/join_educourse.php
         File: /edufeedr/actions/remove_assignment.php
         File: /edufeedr/actions/remove_participant.php
-        Lines: 325, 52, 80, 98, 55, 89, 86, 88, 24, 26
+        Lines: 414, 52, 80, 99, 55, 89, 88, 90, 24, 26
         Text: Error occured, object could not be sent to EduSuckr.
         _missing_translation_
         */
@@ -350,7 +350,7 @@
         
         /* 
         File: /edufeedr/actions/add_educourse.php
-        Lines: 102
+        Lines: 103
         Text: Course added
         _missing_translation_
         */
@@ -660,7 +660,7 @@
         
         /* 
         File: /edufeedr/api.php
-        Lines: 293
+        Lines: 382
         Text: Post not found in blog RSS.
         _missing_translation_
         */
@@ -703,7 +703,7 @@
         
         /* 
         File: /edufeedr/actions/join_educourse.php
-        Lines: 92
+        Lines: 94
         Text: Participant could not be added to course %s
         _missing_translation_
         */
@@ -879,7 +879,7 @@
         
         /* 
         File: /edufeedr/actions/edit_participant.php
-        Lines: 69
+        Lines: 70
         Text: Participant information changed.
         _missing_translation_
         */
@@ -1000,7 +1000,7 @@
         
         /* 
         File: /edufeedr/api.php
-        Lines: 248
+        Lines: 337
         Text: Entered URL does not exist.
         _missing_translation_
         */
