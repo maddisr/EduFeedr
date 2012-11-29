@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin_manifest>
 	<field key="author" value="Tallinn University Center for Educational Technology" />
-	<field key="version" value="0.5.1" />
+	<field key="version" value="0.5.2" />
 	<field key="description" value="EduFeedr for elgg" />
 	<field key="website" value="http://trac.htk.tlu.ee/edufeedr" />
 	<field key="copyright" value="(C) Center for Educational Technology 2010" />
