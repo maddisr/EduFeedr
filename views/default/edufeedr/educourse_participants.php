@@ -1,17 +1,17 @@
 <?php
     
     if (isset($vars['entity'])) {
-		$body = "";
-		$ts = time();
-		$token = generate_action_token($ts);
+        $body = "";
+        $ts = time();
+        $token = generate_action_token($ts);
         $can_edit_educourse = $vars['entity']->canEdit() && edufeedrCanEditEducourse($vars['entity']);
 
-		$body .= '<div class="educourse">';
+        $body .= '<div class="educourse">';
 
-		$body .= elgg_view('edufeedr/educourse_de', array('entity' => $vars['entity']));
+        $body .= elgg_view('edufeedr/educourse_de', array('entity' => $vars['entity']));
 
-		// Course patricipants
-		$participants = edufeedrGetCourseParticipants($vars['entity']->getGUID());
+        // Course patricipants
+        $participants = edufeedrGetCourseParticipants($vars['entity']->getGUID());
 
         if (is_array($participants)) {
 
@@ -23,17 +23,17 @@
             }
             $body .= '</ol>';
             $body .= '</div>';
-			$blogroll = elgg_view('edufeedr/copiable_blogroll', array('participants' => $participants));
+            $blogroll = elgg_view('edufeedr/copiable_blogroll', array('participants' => $participants));
 
-			$body .= '<div id="edufeedr_educourse_secondary_actioncontrols">';
-			/*translation:Downloads*/
-			$body .= '<label>' . elgg_echo('edufeedr:label:course:downloads') . '</label>';
-			$body .= '<ul>';
-			// vCard is only available for course owner and facilitators
-			if ($can_edit_educourse) {
+            $body .= '<div id="edufeedr_educourse_secondary_actioncontrols">';
+            /*translation:Downloads*/
+            $body .= '<label>' . elgg_echo('edufeedr:label:course:downloads') . '</label>';
+            $body .= '<ul>';
+            // vCard is only available for course owner and facilitators
+            if ($can_edit_educourse) {
                 /*translation:vCard file with Address Book contacts*/
-				$body .= '<li><a href="' . $vars['url'] . 'action/edufeedr/download_educourse_vcard?educourse=' . $vars['entity']->getGUID() . '&__elgg_ts='. $ts . '&__elgg_token=' . $token .'">' . elgg_echo('edufeedr:action:download:vcard:file') . '</a></li>';
-			}
+                $body .= '<li><a href="' . $vars['url'] . 'action/edufeedr/download_educourse_vcard?educourse=' . $vars['entity']->getGUID() . '&__elgg_ts='. $ts . '&__elgg_token=' . $token .'">' . elgg_echo('edufeedr:action:download:vcard:file') . '</a></li>';
+            }
 
             /*translation:OPML file with RSS feeds for blog posts*/
             $body .= '<li><a href="' . $vars['url'] . 'action/edufeedr/download_educourse_opml?educourse=' . $vars['entity']->getGUID() . '&type=posts&__elgg_ts=' . $ts . '&__elgg_token=' . $token . '">' . elgg_echo('edufeedr:action:download:posts:opml:file') . '</a></li>';
@@ -42,10 +42,10 @@
             $body .= '<li><a href="' . $vars['url'] . 'action/edufeedr/download_educourse_opml?educourse=' . $vars['entity']->getGUID() . '&type=comments&__elgg_ts=' . $ts . '&__elgg_token=' . $token . '">' . elgg_echo('edufeedr:action:download:comments:opml:file') . '</a></li>';
 
             if ($can_edit_educourse) {
-			    /*translation:CSV file with list of participants and assignments*/
+                /*translation:CSV file with list of participants and assignments*/
                 $body .= '<li><a href="' . elgg_add_action_tokens_to_url($vars['url'] . 'action/edufeedr/download_educourse_pa_csv?educourse=' . $vars['entity']->getGUID()) . '">' . elgg_echo('edufeedr:action:download:participants:assignments:csv:file') . '</a></li>';
             }
-			$body .= '</ul>';
+            $body .= '</ul>';
             $body .= '</div>';
 
             $body .= '<div class="educourse_course_blogroll">';
@@ -53,13 +53,13 @@
             $body .= '<label>' . elgg_echo('edufeedr:label:blogroll') . '</label><br />';
             $body .= '<input type="text" class="input-text" name="educourse_blogroll" id="educourse_blogroll" value="' . htmlentities($blogroll, ENT_QUOTES, 'UTF-8') . '" onclick="$(\'#educourse_blogroll\').focus().select()" />';
             $body .= '</div>';
-		}
+        }
 
-		// Display facilitators
-		$body .= elgg_view('edufeedr/educourse_facilitators', array('entity' => $vars['entity'], 'type' => 'view'));
+        // Display facilitators
+        $body .= elgg_view('edufeedr/educourse_facilitators', array('entity' => $vars['entity'], 'type' => 'view'));
 
-		$body .= '</div>';//educourse ends
+        $body .= '</div>';//educourse ends
 
-		echo $body;
+        echo $body;
     }
 ?>
