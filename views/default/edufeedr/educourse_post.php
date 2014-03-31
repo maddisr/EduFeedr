@@ -31,7 +31,7 @@
 			/*translation:%s by %s*/
 			$body .= '<em>' . sprintf(elgg_echo('edufeedr:blog:by'), date('d.m.Y G:i', $data['post']['date']), $data['post']['author']) . '</em>';
 			$body .= '<div id="educourse_post_content">' . nl2br($data['post']['content']) . '</div>';
-			
+			$body .= '<em>' . sprintf(elgg_echo('edufeedr:blog:by'), date('d.m.Y G:i', $data['post']['date']), $data['post']['author']) . '</em>';	
 			// Hide post	
 			if ($can_edit_educourse) {
                 if ($is_post_hidden) {
@@ -45,6 +45,29 @@
 				    /*translation:hide*/
 				    $body .= '<a href="'.$vars['url'].'action/edufeedr/hide_post?post_id='.$data['post']['id'].'&educourse='.$vars['entity']->getGUID().'&__elgg_ts='.$ts.'&__elgg_token='.$token.'">' . elgg_echo('edufeedr:action:hide') . '</a>';
                 }
+				$form_body .= '<div>';
+					    $form_body .= '<input type="hidden" name="course_guid" value="' . $vars['entity']->getGUID() . '" />';
+						$form_body .= '<input type="hidden" name="post_id" value="' . $data['post']['id'] . '" />';
+				        $assignments = edufeedrGetCourseAssignments($vars['entity']->getGUID());
+					    $options_values = array();
+					    if (!empty($assignments)) {
+					        foreach ($assignments as $single) {
+						        $options_values[$single->id] = $single->title;
+						    }
+					    }
+				        $form_body .= elgg_view('input/pulldown', array(
+					        'internalname' => 'assignment_id',
+						    'value' => '',
+						    'options_values' => $options_values,
+					    ));
+						/*translation:Connect*/
+					    $form_body .= '<input type="submit" value="' . elgg_echo('edufeedr:action:connect:with:assignment'). '" />';
+				$form_body .= '</div>';
+				if (empty($data['post']['assignment_id'])) {
+				  $body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/connect_post", 'body' => $form_body));
+				  } else {
+				    $body .= 'DISCONNECT';
+				  }
 			}
 			
 			$body .= '<div id="educourse_post_link"><a href="' . $data['post']['link'] . '" target="_blank">' . $data['post']['link'] . '</a></a>';
@@ -57,7 +80,7 @@
 					$body .= elgg_view('edufeedr/singles/educourse_comment', array('educourse' => $vars['entity'], 'comment' => $comment, 'type' => 'viewpost'));
 				}
 			}
-
+			
 			$body .= '<div id="edufeedr_blog_post_a_comment">';
 			/*translation:Post a comment*/
 			$body .= '<a href="'.$data['post']['link'].'" target="_blank">' . elgg_echo('edufeedr:post:write:a:comment') . '</a>';

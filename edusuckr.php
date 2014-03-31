@@ -104,6 +104,13 @@
 		function getParticipantPosts($param) {
 			return unserialize($this->client->call('getParticipantPosts', array($param)));
 		}
+		
+		/**
+		 * TODO add doctstring
+		 */
+        function connectPostWithAssignment($coure_guid, $post_id, $assignment_id) {
+            return $this->client->call('connectPostWithAssignment', array($coure_guid, $post_id, $assignment_id));
+        }
 
     }
 

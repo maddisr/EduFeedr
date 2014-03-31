@@ -189,3 +189,4 @@
 	register_action('edufeedr/unhide_comment', false, $CONFIG->pluginspath . 'edufeedr/actions/unhide_comment.php');
 	register_action('edufeedr/add_facilitator', false, $CONFIG->pluginspath . 'edufeedr/actions/ajax/add_facilitator.php');
 	register_action('edufeedr/remove_facilitator', false, $CONFIG->pluginspath . 'edufeedr/actions/ajax/remove_facilitator.php');
+	register_action('edufeedr/connect_post', false, $CONFIG->pluginspath . 'edufeedr/actions/connect_post.php');
