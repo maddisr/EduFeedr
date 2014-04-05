@@ -69,10 +69,12 @@
 						/*translation:Connect*/
 					    /*$form_body .= '<input type="submit" value="' . elgg_echo('edufeedr:action:connect:with:assignment'). '" />';*/
 						
-				$form_body .= '</div>';    
+				$form_body .= '</div>'; 
+				/*translation:Connect*/				
 				if (empty($data['post']['assignment_id'])) {
 				  $form_body .= '<input type="submit" value="' . elgg_echo('Connect'). '" />';
 				  $body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/connect_post", 'body' => $form_body));
+				  /*translation:disconnect*/
 				  } else {
 				    $form_body .= '<input type="submit" value="' . elgg_echo('Disconnect'). '" />';
 				    $body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/disconnect_post", 'body' => $form_body));;
