@@ -68,6 +68,7 @@
 				  } else {
 				    $body .= 'DISCONNECT';
 				  }
+			
 			}
 			
 			$body .= '<div id="educourse_post_link"><a href="' . $data['post']['link'] . '" target="_blank">' . $data['post']['link'] . '</a></a>';
