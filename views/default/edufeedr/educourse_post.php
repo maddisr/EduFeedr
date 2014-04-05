@@ -66,24 +66,18 @@
 				if (empty($data['post']['assignment_id'])) {
 				  $body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/connect_post", 'body' => $form_body));
 				  } else {
-				    $body .= 'DISCONNECT';
-				  }
-			}
-			
-				$disconnet_form_body .= '<div>';
-					    $disconnet_form_body .= '<input type="hidden" name="course_guid" value="' . $vars['entity']->getGUID() . '" />';
-						$disconnet_form_body .= '<input type="hidden" name="post_id" value="' . $data['post']['id'] . '" />';
+						$disconnect_form_body .= '<div>';
+					    $disconnect_form_body .= '<input type="hidden" name="course_guid" value="' . $vars['entity']->getGUID() . '" />';
+						$disconnect_form_body .= '<input type="hidden" name="post_id" value="' . $data['post']['id'] . '" />';
 				        $assignments = edufeedrGetCourseAssignments($vars['entity']->getGUID());
 					 
-					    $disconnet_form_body .= '<input type="submit" value="' . elgg_echo('edufeedr:action:disconnect:with:assignment'). '" />';
-				$disconnet_form_body .= '</div>';
-				if (isset($data['post']['assignment_id'])) {
-				  $body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/disconnect_post", 'body' => $disconnet_form_body));
-				  } else {
-				    $body .= 'CONNECT';
-				  }
+					    $disconnect_form_body .= '<input type="submit" value="Disconnect" />';
+						$disconnect_form_body .= '</div>';
+							$body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/disconnect_post", 'body' => $disconnect_form_body));
+				  
+				}
+			  }
 			}
-			
 			$body .= '<div id="educourse_post_link"><a href="' . $data['post']['link'] . '" target="_blank">' . $data['post']['link'] . '</a></a>';
 
 			// Comments
