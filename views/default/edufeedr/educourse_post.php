@@ -53,31 +53,32 @@
 					    if (!empty($assignments)) {
 					        foreach ($assignments as $single) {
 						        $options_values[$single->id] = $single->title;
-						    }
+						    
+							
+							}
 					    }
+						
 				        $form_body .= elgg_view('input/pulldown', array(
 					        'internalname' => 'assignment_id',
 						    'value' => '',
 						    'options_values' => $options_values,
 					    ));
+						
+						
+						
 						/*translation:Connect*/
-					    $form_body .= '<input type="submit" value="' . elgg_echo('edufeedr:action:connect:with:assignment'). '" />';
-				$form_body .= '</div>';
+					    /*$form_body .= '<input type="submit" value="' . elgg_echo('edufeedr:action:connect:with:assignment'). '" />';*/
+						
+				$form_body .= '</div>';    
 				if (empty($data['post']['assignment_id'])) {
+				  $form_body .= '<input type="submit" value="' . elgg_echo('Connect'). '" />';
 				  $body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/connect_post", 'body' => $form_body));
 				  } else {
-						$disconnect_form_body .= '<div>';
-					    $disconnect_form_body .= '<input type="hidden" name="course_guid" value="' . $vars['entity']->getGUID() . '" />';
-						$disconnect_form_body .= '<input type="hidden" name="post_id" value="' . $data['post']['id'] . '" />';
-				        $assignments = edufeedrGetCourseAssignments($vars['entity']->getGUID());
-					 
-					    $disconnect_form_body .= '<input type="submit" value="Disconnect" />';
-						$disconnect_form_body .= '</div>';
-							$body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/disconnect_post", 'body' => $disconnect_form_body));
-				  
-				}
-			  }
+				    $form_body .= '<input type="submit" value="' . elgg_echo('Disconnect'). '" />';
+				    $body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/disconnect_post", 'body' => $form_body));;
+				  }
 			}
+			
 			$body .= '<div id="educourse_post_link"><a href="' . $data['post']['link'] . '" target="_blank">' . $data['post']['link'] . '</a></a>';
 
 			// Comments
@@ -97,5 +98,5 @@
 		$body .= '</div>';//educourse ends
 
 		echo $body;
-    
+    }
 ?>
