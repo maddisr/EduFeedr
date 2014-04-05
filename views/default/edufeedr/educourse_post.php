@@ -74,18 +74,7 @@
 					    $disconnet_form_body .= '<input type="hidden" name="course_guid" value="' . $vars['entity']->getGUID() . '" />';
 						$disconnet_form_body .= '<input type="hidden" name="post_id" value="' . $data['post']['id'] . '" />';
 				        $assignments = edufeedrGetCourseAssignments($vars['entity']->getGUID());
-					    /*$options_values = array();
-					    if (!empty($assignments)) {
-					        foreach ($assignments as $single) {
-						        $options_values[$single->id] = $single->title;
-						    }
-					    }
-				        $form_body .= elgg_view('input/pulldown', array(
-					        'internalname' => 'assignment_id',
-						    'value' => '',
-						    'options_values' => $options_values,
-					    ));
-						/*translation:Connect*/
+					 
 					    $disconnet_form_body .= '<input type="submit" value="' . elgg_echo('edufeedr:action:disconnect:with:assignment'). '" />';
 				$disconnet_form_body .= '</div>';
 				if (isset($data['post']['assignment_id'])) {
