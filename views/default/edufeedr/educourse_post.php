@@ -45,7 +45,13 @@
 				    /*translation:hide*/
 				    $body .= '<a href="'.$vars['url'].'action/edufeedr/hide_post?post_id='.$data['post']['id'].'&educourse='.$vars['entity']->getGUID().'&__elgg_ts='.$ts.'&__elgg_token='.$token.'">' . elgg_echo('edufeedr:action:hide') . '</a>';
                 }
-				$form_body .= '<div>';
+				
+				
+			}
+			$body.='<br/>';
+			$body.= '<div id="educourse_post_link">'.elgg_echo('Originally posted at:  ').'<a href="' . $data['post']['link'] . '" target="_blank">' . $data['post']['link'] . '</a></a>';
+			/*$body .= '<div id="educourse_post_link"><a href="' . $data['post']['link'] . '" target="_blank">' . $data['post']['link'] . '</a></a>';*/
+			$form_body .= '<div>';
 					    $form_body .= '<input type="hidden" name="course_guid" value="' . $vars['entity']->getGUID() . '" />';
 						$form_body .= '<input type="hidden" name="post_id" value="' . $data['post']['id'] . '" />';
 				        $assignments = edufeedrGetCourseAssignments($vars['entity']->getGUID());
@@ -58,31 +64,24 @@
 							}
 					    }
 						
-				        $form_body .= elgg_view('input/pulldown', array(
+				        $form_body .= elgg_view('input/pulldown',  array(
 					        'internalname' => 'assignment_id',
 						    'value' => '',
 						    'options_values' => $options_values,
 					    ));
 						
-						
-						
-						/*translation:Connect*/
-					    /*$form_body .= '<input type="submit" value="' . elgg_echo('edufeedr:action:connect:with:assignment'). '" />';*/
-						
-				$form_body .= '</div>'; 
 				/*translation:Connect*/				
 				if (empty($data['post']['assignment_id'])) {
-				  $form_body .= '<input type="submit" value="' . elgg_echo('Connect'). '" />';
+				  $form_body .= '<input type="submit" value="' . elgg_echo(' Connect'). '"/>';
 				  $body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/connect_post", 'body' => $form_body));
 				  /*translation:disconnect*/
 				  } else {
-				    $form_body .= '<input type="submit" value="' . elgg_echo('Disconnect'). '" />';
-				    $body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/disconnect_post", 'body' => $form_body));;
+					$form_body .= '<input type="image" src="' . $vars['url'] . 'mod/edufeedr/views/default/graphics/link_break.png" alt="disconnect" height=25px/>';
+					
+				    $body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/disconnect_post", 'body' => $form_body));
+				  
 				  }
-			}
-			
-			$body .= '<div id="educourse_post_link"><a href="' . $data['post']['link'] . '" target="_blank">' . $data['post']['link'] . '</a></a>';
-
+			$form_body .= '</div>'; 
 			// Comments
 			/*translation:%s comments*/
 			$body .= '<h3 style="margin-top:20px;margin-bottom:10px;">' . sprintf(elgg_echo('edufeedr:blog:comments'), sizeof($data['comments'])) . ':</h3>';
