@@ -63,23 +63,27 @@
 							
 							}
 					    }
-						
+						if(!empty($assignments)){
 				        $form_body .= elgg_view('input/pulldown',  array(
 					        'internalname' => 'assignment_id',
 						    'value' => '',
 						    'options_values' => $options_values,
 					    ));
-						
+						}
 				/*translation:Connect*/				
+				
 				if (empty($data['post']['assignment_id'])) {
+				  if(!NULL==($assignments)){
 				  $form_body .= '<input type="submit" value="' . elgg_echo(' Connect'). '"/>';
 				  $body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/connect_post", 'body' => $form_body));
+				  }
+				  
 				  /*translation:disconnect*/
 				  } else {
-					$form_body .= '<input type="image" src="' . $vars['url'] . 'mod/edufeedr/views/default/graphics/link_break.png" alt="disconnect" height=25px/>';
-					
+					if(isset($assignments)){
+					$form_body .= '<input type="image" src="' . $vars['url'] . 'mod/edufeedr/views/default/graphics/link_break.png" alt="disconnect_post" height=25px/>';
 				    $body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/disconnect_post", 'body' => $form_body));
-				  
+					}
 				  }
 			$form_body .= '</div>'; 
 			// Comments
