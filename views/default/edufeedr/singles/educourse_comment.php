@@ -60,7 +60,33 @@
 		    /*translation:hide*/
 			$body .= '<a href="'.$vars['url'].'action/edufeedr/hide_comment?comment_id='.$vars['comment']['id'].'&educourse='.$vars['educourse']->getGUID().'&__elgg_ts='.$ts.'&__elgg_token='.$token.'">' . elgg_echo('edufeedr:action:hide'). '</a>';
 		}
-
+		$body.='<br/>';
+			$body.= '<div id="educourse_post_link">'.elgg_echo('Originally posted at:  ').'';
+			
+			if (edufeedrGetCourseParticipantsCount($vars['educourse']->getGUID()) > 0) {
+				if (empty($data['id']['participant_id'])) {
+					$form_body .= '<div>';
+					$form_body .= '<input type="hidden" name="course_guid" value="' . $vars['educourse']->getGUID() . '" />';
+					$form_body .= '<input type="hidden" name="id" value="' . $data['comment']['id'] . '" />';
+					$participants = edufeedrGetCourseParticipants($vars['educourse']->getGUID());
+					
+					$options_values = array();
+					foreach ($participants as $participant) {
+						$options_values[$participant->id] = $participant->firstname.' '.$participant->lastname;
+					}
+				    
+					$form_body .= elgg_view('input/pulldown',  array(
+						'internalname' => 'participant_id',
+						'value' => '',
+						'options_values' => $options_values,
+					));
+					/*translation:connect_comment*/
+					$form_body .= '<input type="submit" value="' . elgg_echo('edufeedr:connect_comment'). '"/>';
+					$form_body .= '</div>';
+					$body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/connect_comment_with_participant", 'body' => $form_body));		
+					
+				}
+			}
 		$body .= '</div>';// end of comment
 
 		echo $body;
