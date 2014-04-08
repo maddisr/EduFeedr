@@ -111,8 +111,8 @@
         function connectPostWithAssignment($coure_guid, $post_id, $assignment_id) {
             return $this->client->call('connectPostWithAssignment', array($coure_guid, $post_id, $assignment_id));
         }
-		function disconnectPostWithAssignment($coure_guid, $post_id, $assignment_id) {
-            return $this->client->call('disconnectPostWithAssignment', array($coure_guid, $post_id, $assignment_id));
+		function disconnectPostWithAssignment($coure_guid, $post_id) {
+            return $this->client->call('disconnectPostWithAssignment', array($coure_guid, $post_id));
         }
 
     }
