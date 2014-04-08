@@ -114,7 +114,10 @@
 		function disconnectPostWithAssignment($coure_guid, $post_id) {
             return $this->client->call('disconnectPostWithAssignment', array($coure_guid, $post_id));
         }
-
-    }
+		function connectCommentWithParticipant($course_guid, $post_id, $participant_id) {
+            return $this->client->call('connectCommentWithParticipant', array($course_guid, $post_id, $participant_id));
+		}
+	
+	}
 
 ?>
