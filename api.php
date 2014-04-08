@@ -435,6 +435,15 @@
 		global $CONFIG;
 		return get_data("SELECT * from {$CONFIG->dbprefix}edufeedr_course_assignments WHERE course_guid = $guid");
 	}
+	
+	/**
+	 * TODO Need to write docstring
+	 */
+	function edufeedrGetCourseAssignmentsCount($guid) {
+		global $CONFIG;
+		$data = get_data_row("SELECT COUNT(*) AS count from {$CONFIG->dbprefix}edufeedr_course_assignments WHERE course_guid = $guid");
+		return (int) $data->count;
+	}
 
 	function edufeedrGetSingleParticipant($course_guid, $participant_id) {
 		global $CONFIG;
@@ -498,7 +507,7 @@
 		}
 		return false;
 	}
-
+	
 	// Returns empty string in case only a placeholder is provided
 	function edufeedrDealWithUrlPlaceholder($url) {
 		if (trim($url) == 'http://') {
