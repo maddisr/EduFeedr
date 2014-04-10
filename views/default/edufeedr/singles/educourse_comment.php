@@ -23,9 +23,12 @@
 		if (in_array($type, array('coursefeed', 'viewpost'))) {
 			if ($vars['comment']['author'] == $vars['comment']['post_author']) {
 				$body .= '<h4 style="padding-top:15px;">'.$vars['comment']['author'].'</h4>';
+				
 			} else {
 			/*translation:%s to %s*/
 				$body .= '<h4 style="padding-top:15px;">'.sprintf(elgg_echo('edufeedr:post_comment_commenter_to_poster'), $vars['comment']['author'], $vars['comment']['post_author']).'</h4>';
+			
+			
 			}
 		}
 
@@ -35,7 +38,10 @@
 		$body .= '<div class="edufeedr_comment_content">';
 		// Getting comment content plaintext
 		$comment_content = strip_tags($vars['comment']['content']);
+		
 		if ($type == 'coursefeed') {
+			
+			
 			if (strlen($comment_content)>200) {
 				$last_space = strrpos(substr($comment_content, 0, 200), ' ');
 				$body .= substr($comment_content, 0, $last_space);
@@ -88,14 +94,14 @@
 						$form_body .= '</div>';
 						$body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/connect_comment_with_participant", 'body' => $form_body));
 					} else {
-						$participant  =  edufeedrGetCourseParticipants($vars['educourse']->getGUID(), $vars['comment']['participant_id']);
+						$participant = edufeedrGetSingleParticipant($vars['educourse']->getGUID(), $vars['comment']['participant_id']);
 						$form_body .= '<div>';
-						$form_body .= '<input type="text" name="course_guid" value="' . $vars['educourse']->getGUID() . '" />';
-						$form_body .= '<input type="text" name="comment_id" value="' . $vars['comment']['id'] . '" />';
-						$form_body .= '<input type="text" name="post_id" value="' . $vars['comment']['post_id'] . '" />';
-						$form_body .= elgg_view('output/url', array( 'href' => $participant->comments, 'text' => $participant->firstname .' '. $participant->lastname, 'target'=>'_blank'));
+						$form_body .= '<input type="hidden" name="course_guid" value="' . $vars['educourse']->getGUID() . '" />';
+						$form_body .= '<input type="hidden" name="comment_id" value="' . $vars['comment']['id'] . '" />';
+						$form_body .= '<input type="hidden" name="post_id" value="' . $vars['comment']['post_id'] . '" />';	    
+						
 						/*translation:disconnect_comment*/	
-						$form_body .= '<input type="image" src="' . $vars['url'] . 'mod/edufeedr/views/default/graphics/link_break.png" title="' . elgg_echo('edufeedr:disconnect_comment') . '" height=25px/>';
+						$form_body .= '<input type="submit" value="' . elgg_echo('edufeedr:disconnect_comment'). '"/>';
 						$form_body .= '</div>';
 						$body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/disconnect_comment_with_participant", 'body' => $form_body));
 					}
