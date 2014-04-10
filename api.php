@@ -444,6 +444,12 @@
 		$data = get_data_row("SELECT COUNT(*) AS count from {$CONFIG->dbprefix}edufeedr_course_assignments WHERE course_guid = $guid");
 		return (int) $data->count;
 	}
+	
+	function edufeedrGetCourseParticipantsCount($guid) {
+		global $CONFIG;
+		$data = get_data_row("SELECT COUNT(*) AS count from {$CONFIG->dbprefix}edufeedr_course_participants WHERE course_guid = $guid AND status='active'");
+		return (int) $data->count;
+	}
 
 	function edufeedrGetSingleParticipant($course_guid, $participant_id) {
 		global $CONFIG;
