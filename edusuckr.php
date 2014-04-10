@@ -111,13 +111,20 @@
         function connectPostWithAssignment($coure_guid, $post_id, $assignment_id) {
             return $this->client->call('connectPostWithAssignment', array($coure_guid, $post_id, $assignment_id));
         }
+		
 		function disconnectPostWithAssignment($coure_guid, $post_id) {
             return $this->client->call('disconnectPostWithAssignment', array($coure_guid, $post_id));
         }
-		function connectCommentWithParticipant($course_guid, $post_id, $participant_id) {
-            return $this->client->call('connectCommentWithParticipant', array($course_guid, $post_id, $participant_id));
-		}
+		
+		function connectCommentWithParticipant($coure_guid, $comment_id, $participant_id) {
+            return $this->client->call('connectCommentWithParticipant', array($coure_guid, $comment_id, $participant_id));
+        }
+		
+		function disconnectCommentWithParticipant($coure_guid, $comment_id, $participant_id) {
+            return $this->client->call('disconnectCommentWithParticipant', array($coure_guid, $comment_id, $participant_id));
+        }
 	
+		
 	}
 
 ?>
