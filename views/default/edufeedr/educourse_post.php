@@ -54,8 +54,8 @@
 			if (edufeedrGetCourseAssignmentsCount($vars['entity']->getGUID()) > 0) {
 				if (empty($data['post']['assignment_id'])) {
 					$form_body .= '<div>';
-					$form_body .= '<input type="hidden" name="course_guid" value="' . $vars['entity']->getGUID() . '" />';
-					$form_body .= '<input type="hidden" name="post_id" value="' . $data['post']['id'] . '" />';
+					$form_body .= '<input type="text" name="course_guid" value="' . $vars['entity']->getGUID() . '" />';
+					$form_body .= '<input type="text" name="post_id" value="' . $data['post']['id'] . '" />';
 					$assignments = edufeedrGetCourseAssignments($vars['entity']->getGUID());
 					
 					$options_values = array();
@@ -98,9 +98,11 @@
 			/*translation:Post a comment*/
 			$body .= '<a href="'.$data['post']['link'].'" target="_blank">' . elgg_echo('edufeedr:post:write:a:comment') . '</a>';
 			$body .= '</div>';
-        }
+        
+			
 		$body .= '</div>';//educourse ends
 
 		echo $body;
     }
+	}
 ?>
