@@ -192,3 +192,4 @@
 	register_action('edufeedr/connect_post', false, $CONFIG->pluginspath . 'edufeedr/actions/connect_post.php');
 	register_action('edufeedr/disconnect_post', false, $CONFIG->pluginspath . 'edufeedr/actions/disconnect_post.php');
 	register_action('edufeedr/connect_comment_with_participant', false, $CONFIG->pluginspath . 'edufeedr/actions/connect_comment_with_participant.php');
+	register_action('edufeedr/disconnect_comment_with_participant', false, $CONFIG->pluginspath . 'edufeedr/actions/disconnect_comment_with_participant.php');
