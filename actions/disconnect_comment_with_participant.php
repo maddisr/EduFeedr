@@ -6,18 +6,13 @@
 	
 	$course_guid = (int) get_input('course_guid');
 	$comment_id = (int) get_input('comment_id');
-	$participant_id = (int) get_input('participant_id');
 	$post_id = (int) get_input('post_id');
 	
-
 	$educourse = get_entity($course_guid);
 	
-	
-	if ($educourse->getSubtype() == 'educourse' && $educourse->canEdit() && edufeedrCanEditEducourse($educourse) && $comment_id && $participant_id) {
-		
-		
+	if ($educourse->getSubtype() == 'educourse' && $educourse->canEdit() && edufeedrCanEditEducourse($educourse) && $comment_id && $post_id) {
 		$es = new EduSuckr();
-		$result = $es->disconnectCommentWithParticipant($course_guid, $comment_id, $participant_id);
+		$result = $es->disconnectCommentWithParticipant($course_guid, $comment_id, $post_id);
 
 		if ($result) {
 			/*translation:Comment connected.*/
