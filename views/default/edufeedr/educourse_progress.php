@@ -23,7 +23,9 @@
 						else if ($assignment_result['state'] == 1)
 							$body .= '<a href="' . $vars['url'] . 'pg/edufeedr/view_post/'. $vars['entity']->getGUID() . '/' . $assignment_result['id'] . '" title="' . $assignment_result['title'] . '"><img src="' . $vars['url'] . 'mod/edufeedr/views/default/graphics/assignment_time_frame.png" alt="' . $assignment_result['state']  . '" /></a>';
 						else if ($assignment_result['state'] == 2)
-						$body .= '<a href="' . $vars['url'] . 'pg/edufeedr/view_post/' . $vars['entity']->getGUID() . '/' . $assignment_result['id'] . '" title="' . $assignment_result['title'] . '"><img src="' . $vars['url'] . 'mod/edufeedr/views/default/graphics/assignment_done.png" alt="' . $assignment_result['state']  . '" /></a>';
+							$body .= '<a href="' . $vars['url'] . 'pg/edufeedr/view_post/' . $vars['entity']->getGUID() . '/' . $assignment_result['id'] . '" title="' . $assignment_result['title'] . '"><img src="' . $vars['url'] . 'mod/edufeedr/views/default/graphics/assignment_done.png" alt="' . $assignment_result['state']  . '" /></a>';
+						else if ($assignment_result['state'] == 3)
+							$body .= '<a href="' . $vars['url'] . 'pg/edufeedr/view_post/' . $vars['entity']->getGUID() . '/' . $assignment_result['id'] . '" title="' . $assignment_result['title'] . '"><img src="' . $vars['url'] . 'mod/edufeedr/views/default/graphics/assignment_done.png" alt="' . $assignment_result['state']  . '" /></a>';
 				}
 			}
 			$body .= '</td>';
