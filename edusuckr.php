@@ -86,6 +86,8 @@
 		function getCoursePostById($param) {
 			return unserialize($this->client->call('getCoursePostById', array($param)));
 		}
+		
+		
 		function getHiddenPostsByCourse($course_guid) {
 			$posts = $this->client->call('getHiddenPostsByCourse', array($course_guid));
 			if ($posts) {
@@ -105,8 +107,8 @@
 			return unserialize($this->client->call('getParticipantPosts', array($param)));
 		}
 		
-		function getParticipantComments($param) {
-			return unserialize($this->client->call('getParticipantComments', array($param)));
+		function getParticipantComments($course_guid, $participant_id) {
+			return unserialize($this->client->call('getParticipantComments', array($course_guid, $participant_id)));
 		}
 		
 		/**
