@@ -105,6 +105,10 @@
 			return unserialize($this->client->call('getParticipantPosts', array($param)));
 		}
 		
+		function getParticipantComments($param) {
+			return unserialize($this->client->call('getParticipantComments', array($param)));
+		}
+		
 		/**
 		 * TODO add doctstring
 		 */
