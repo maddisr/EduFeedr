@@ -54,16 +54,24 @@
 			if (edufeedrGetCourseAssignmentsCount($vars['entity']->getGUID()) > 0) {
 				if (empty($data['post']['assignment_id'])) {
 					$form_body .= '<div>';
-					$form_body .= '<input type="text" name="course_guid" value="' . $vars['entity']->getGUID() . '" />';
-					$form_body .= '<input type="text" name="post_id" value="' . $data['post']['id'] . '" />';
+					$form_body .= '<input type="hidden" name="course_guid" value="' . $vars['entity']->getGUID() . '" />';
+					$form_body .= '<input type="hidden" name="post_id" value="' . $data['post']['id'] . '" />';
 					$assignments = edufeedrGetCourseAssignments($vars['entity']->getGUID());
-					
-					$options_values = array();
-					foreach ($assignments as $single) {
-						$options_values[$single->id] = $single->title;
+					if ($assignments && is_array($assignments)) {
+						
+						uasort($assignments, '__edufeedr_assignments_sort_cmp');
+						
+						$i = 0;
+						$options_values = array();
+						foreach ($assignments as $single) {
+							$i++;
+								$options_values[$single->id] = sprintf(elgg_echo('edufeedr:assignment:label:numbered'), $i) .': '. $single->title;
+								
+						}
 					}
-				    
+					
 					$form_body .= elgg_view('input/pulldown',  array(
+						
 						'internalname' => 'assignment_id',
 						'value' => '',
 						'options_values' => $options_values,
@@ -77,11 +85,12 @@
 					$form_body .= '<div>';
 					$form_body .= '<input type="hidden" name="course_guid" value="' . $vars['entity']->getGUID() . '" />';
 					$form_body .= '<input type="hidden" name="post_id" value="' . $data['post']['id'] . '" />';
-					$form_body .= elgg_view('output/url', array( 'href' => $assignment->blog_post_url, 'text' => $assignment->title, 'target'=>'_blank'));
+					$form_body .= elgg_view('output/url', array( 'href' =>$assignment->blog_post_url, 'text' => $assignment->title, 'target'=>'_blank'));
 					/*translation:disconnect*/	
-					$form_body .= '<input type="image" src="' . $vars['url'] . 'mod/edufeedr/views/default/graphics/link_break.png" title="' . elgg_echo('edufeedr:disconnect_post') . '" height=25px/>';
+					$form_body .= '<input type="image" src="' . $vars['url'] . 'mod/edufeedr/views/default/graphics/link_break.png" title="' . elgg_echo('edufeedr:disconnect_post') . '" height=20px/>';
 					$form_body .= '</div>';
 					$body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/disconnect_post", 'body' => $form_body));
+					
 				}
 			}
 			
