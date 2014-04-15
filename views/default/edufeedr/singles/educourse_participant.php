@@ -2,8 +2,8 @@
 
     if (isset($vars['participant']) && isset($vars['entity'])) {
 	    echo '<li>';
-        // XXX Profile URL is disabled as there is not enough information for it to make sense
-		//echo '<a href="'.$vars['url'].'pg/edufeedr/view_profile/'.$vars['entity']->getGUID().'/'.$vars['participant']->id.'">'.$vars['participant']->firstname . ' ' . $vars['participant']->lastname . '</a> / ';
+   
+		echo '<a href="'.$vars['url'].'pg/edufeedr/view_profile/'.$vars['entity']->getGUID().'/'.$vars['participant']->id.'">'.$vars['participant']->firstname . ' ' . $vars['participant']->lastname . '</a> / ';
         echo $vars['participant']->firstname . ' ' . $vars['participant']->lastname . ' / ';
 		if (edufeedrCanEditEducourse($vars['entity']))
 			echo elgg_view('output/email', array('value' => $vars['participant']->email)) . ' / ';

@@ -18,20 +18,37 @@
 		}
 
 		$body .= '<div class="edufeedr_post_comment">';
-
+		
 		// Title
 		if (in_array($type, array('coursefeed', 'viewpost'))) {
 			if ($vars['comment']['author'] == $vars['comment']['post_author']) {
 				$body .= '<h4 style="padding-top:15px;">'.$vars['comment']['author'].'</h4>';
+			
+			
+			/*translation:disconnect_comment*/	
+			} else if (edufeedrGetCourseParticipantsCount($vars['educourse']->getGUID()) > 0){
+				if (isset($vars['comment']['participant_id'])) {
+			
+					$participant = edufeedrGetSingleParticipant($vars['educourse']->getGUID(), $vars['comment']['participant_id']);
+					$form_body .= '<div>';
+					$form_body .= '<input type="hidden" name="course_guid" value="' . $vars['educourse']->getGUID() . '" />';
+					$form_body .= '<input type="hidden" name="comment_id" value="' . $vars['comment']['id'] . '" />';
+					$form_body .= '<input type="hidden" name="post_id" value="' . $vars['comment']['post_id'] . '" />';	
+					$form_body .= '<h4 style="padding-top:15px;">'.sprintf(elgg_echo('edufeedr:post_comment_commenter_to_poster'), $participant->firstname.' '. $participant->lastname, $vars['comment']['post_author']).'<input type="image" src="' . $vars['url'] . 'mod/edufeedr/views/default/graphics/link_break.png" title="' . elgg_echo('edufeedr:disconnect_post') . '" height=20px/></h4>';  
+					$form_body .= '</div>';
+					$body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/disconnect_comment_with_participant", 'body' => $form_body));
 				
-			} else {
-			/*translation:%s to %s*/
-				$body .= '<h4 style="padding-top:15px;">'.sprintf(elgg_echo('edufeedr:post_comment_commenter_to_poster'), $vars['comment']['author'], $vars['comment']['post_author']).'</h4>';
-			
-			
+				
+				} else {	
+				/*translation:%s to %s*/
+					$body .= '<h4 style="padding-top:15px;">'.sprintf(elgg_echo('edufeedr:post_comment_commenter_to_poster'), $vars['comment']['author'], $vars['comment']['post_author']).'</h4>'; 
+				
+				}
 			}
 		}
-
+		
+		
+		
 		// Date
 		$body .= '<em>' . date('d.m.Y G:i', $vars['comment']['date']) . '</em>';
 		// Content
@@ -66,10 +83,11 @@
         if ($can_edit) {
 		    /*translation:hide*/
 			$body .= '<a href="'.$vars['url'].'action/edufeedr/hide_comment?comment_id='.$vars['comment']['id'].'&educourse='.$vars['educourse']->getGUID().'&__elgg_ts='.$ts.'&__elgg_token='.$token.'">' . elgg_echo('edufeedr:action:hide'). '</a>';
+			
 		}
 		$body.='<br/>';
 			if ($type == 'viewpost'){
-				$body.= '<div id="educourse_post_link">'.elgg_echo('Connect this comment with participant:  ').'';
+				$body.= '<div class="edufeedr_post_comment">'.elgg_echo('Connect this comment with participant:  ').'';
 				$body.='<br/>';
 				if (edufeedrGetCourseParticipantsCount($vars['educourse']->getGUID()) > 0) {
 					if (empty($vars['comment']['participant_id'])) {
@@ -93,17 +111,6 @@
 						$form_body .= '<input type="submit" value="' . elgg_echo('edufeedr:connect_comment'). '"/>';
 						$form_body .= '</div>';
 						$body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/connect_comment_with_participant", 'body' => $form_body));
-					} else {
-						$participant = edufeedrGetSingleParticipant($vars['educourse']->getGUID(), $vars['comment']['participant_id']);
-						$form_body .= '<div>';
-						$form_body .= '<input type="hidden" name="course_guid" value="' . $vars['educourse']->getGUID() . '" />';
-						$form_body .= '<input type="hidden" name="comment_id" value="' . $vars['comment']['id'] . '" />';
-						$form_body .= '<input type="hidden" name="post_id" value="' . $vars['comment']['post_id'] . '" />';	    
-						
-						/*translation:disconnect_comment*/	
-						$form_body .= '<input type="submit" value="' . elgg_echo('edufeedr:disconnect_comment'). '"/>';
-						$form_body .= '</div>';
-						$body .= elgg_view('input/form', array('action' => "{$vars['url']}action/edufeedr/disconnect_comment_with_participant", 'body' => $form_body));
 					}
 				}
 			}	

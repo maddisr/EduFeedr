@@ -50,14 +50,21 @@
 			$body .= '</tbody></table>';
 		}
 
-        $comments = array();// TODO Populate me
+		$es = new EduSuckr;
+		
+		$comments = $es->getParticipantComments($vars['entity']->guid, $vars['participant']->blog_base);
+		if (!($comments && is_array($comments))) {
+			$comments = array();
+		}
 		/*translation:Comments*/
 		$body .= '<h3>'.elgg_echo('edufeedr:latest:comments').' ('.sizeof($comments).'):</h3>';
         if (is_array($comments) && sizeof($comments)>0) {
 			$body .= '<table id="profile_comments"><tbody>';
 			foreach ($comments as $comment) {
+				$body .= "<tr>";
 				$body .= '<td>'.date('d.m.Y', $comment['date']).'</td>';
 				$body .= '<td>'.elgg_view('output/url', array('value' => $vars['url'].'pg/edufeedr/view_post/'.$vars['entity']->getGUID().'/'.$comment['post_id'], 'text' => $comment['post_author'])).'</td>';
+				$body .= "</tr>";
 			}
 			$body .= '</tbody></table>';
 		}
