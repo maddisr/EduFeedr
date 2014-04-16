@@ -52,7 +52,7 @@
 
 		$es = new EduSuckr;
 		
-		$comments = $es->getParticipantComments($vars['entity']->guid, $vars['participant']->blog_base);
+		$comments = $es->getParticipantComments($vars['entity']->guid, $vars['participant']->id);
 		if (!($comments && is_array($comments))) {
 			$comments = array();
 		}
